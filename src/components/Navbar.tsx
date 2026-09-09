@@ -85,13 +85,7 @@ export default function Navbar() {
       <nav className="section-container nav-inner" aria-label="Main navigation">
         <a href="#hero" onClick={goHome} className="nav-brand" aria-label="Shivendra Bhagat, home">
           <span className="brand-symbol" aria-hidden="true">
-            s<span>b</span>
-            <i />
-          </span>
-          <span className="brand-name">
-            Shivendra
-            <br />
-            Bhagat
+            SB
           </span>
         </a>
         <ul className="desktop-nav">

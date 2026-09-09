@@ -140,35 +140,17 @@
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 13px;
   margin-right: auto;
   color: var(--text);
   flex-shrink: 0;
 }
 .brand-symbol {
-  position: relative;
   font-weight: 800;
-  font-size: 42px;
-  letter-spacing: -0.15em;
+  font-size: 56px;
+  letter-spacing: -0.065em;
   line-height: 1;
-  padding-right: 8px;
-}
-.brand-symbol > span {
-  color: var(--accent);
-}
-.brand-symbol i {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  right: 0;
-  bottom: 4px;
-  background: var(--accent);
-}
-.brand-name {
-  font-size: 12px;
-  line-height: 1.45;
-  font-weight: 700;
-  letter-spacing: 0.025em;
+  color: #c5fb89;
+  text-shadow: 0 0 20px rgba(176, 239, 114, 0.18);
 }
 .desktop-nav {
   display: flex;
@@ -871,9 +853,6 @@
   .nav-inner {
     gap: 20px;
   }
-  .brand-name {
-    display: none;
-  }
   .hero-layout {
     gap: 30px;
   }
@@ -901,11 +880,8 @@
   .nav-inner {
     height: 74px;
   }
-  .brand-name {
-    display: block;
-  }
   .brand-symbol {
-    font-size: 36px;
+    font-size: 46px;
   }
   .desktop-nav {
     display: none;

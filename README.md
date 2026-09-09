@@ -31,6 +31,7 @@ Personal portfolio website showcasing my projects, skills, and professional expe
 - **Fully responsive** — mobile-first layout with hamburger navigation
 - **Accessible** — semantic HTML, ARIA labels, skip-to-content link, keyboard navigable
 - **SEO ready** — meta tags, Open Graph tags, and SVG favicon
+- **Search discoverability** — canonical URL, Person/ProfilePage/WebSite structured data, robots.txt, and XML sitemap
 
 ---
 

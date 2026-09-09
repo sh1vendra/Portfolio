@@ -26,20 +26,10 @@ export default function Contact() {
             <h2>
               Get in Touch<span className="accent-dot">.</span>
             </h2>
-            <a
-              href="mailto:shivendra@txstate.edu"
-              className="contact-cta"
-              aria-label="Email Shivendra"
-            >
-              <span aria-hidden="true">↗</span>
-            </a>
           </div>
           <p className="contact-intro">
             Open to collaborations, internships, and full-time opportunities.
           </p>
-          <a className="contact-email" href="mailto:shivendra@txstate.edu">
-            shivendra@txstate.edu
-          </a>
         </motion.div>
         <div className="contact-links">
           {links.map((link) => (

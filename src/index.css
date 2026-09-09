@@ -109,11 +109,6 @@
   background: var(--accent);
   box-shadow: 0 0 14px var(--glow);
 }
-.section-number {
-  color: var(--accent);
-  font-size: 13.2px;
-  letter-spacing: 0.04em;
-}
 
 /* A quiet, persistent navigation rail. */
 .site-header {
@@ -435,10 +430,6 @@
   border-radius: 10px;
   color: var(--accent);
   font-size: 15.6px;
-}
-.card-topline > span {
-  color: var(--quiet);
-  font-size: 12px;
 }
 .about-card h3 {
   font-size: 18px;

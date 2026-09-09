@@ -6,7 +6,7 @@ export default function Skills() {
   return (
     <section id="skills" className="page-section">
       <div className="section-container">
-        <SectionHeading number="04" title="Skills" note="The tools behind the work" />
+        <SectionHeading title="Skills" note="The tools behind the work" />
         <div className="skills-list">
           {skills.map((group, i) => (
             <motion.div

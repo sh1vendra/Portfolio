@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <section id="projects" className="page-section projects-section">
       <div className="section-container">
-        <SectionHeading number="03" title="Projects" note="Ideas, made real" />
+        <SectionHeading title="Projects" note="Ideas, made real" />
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <motion.article
@@ -23,7 +23,6 @@ export default function Projects() {
                   <i />
                   <i />
                 </span>
-                <span>PROJECT / {String(i + 1).padStart(2, '0')}</span>
                 <span aria-hidden="true">↗</span>
               </div>
               <div className="project-image">

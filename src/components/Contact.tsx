@@ -21,9 +21,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
         >
-          <p className="eyebrow">
-            <span className="section-number">06</span>Start a conversation
-          </p>
+          <p className="eyebrow">Start a conversation</p>
           <div className="contact-heading">
             <h2>
               Get in Touch<span className="accent-dot">.</span>

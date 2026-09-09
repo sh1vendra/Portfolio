@@ -17,7 +17,7 @@ export default function About() {
   return (
     <section id="about" className="page-section">
       <div className="section-container">
-        <SectionHeading number="01" title="About Me" note="A little context" />
+        <SectionHeading title="About Me" note="A little context" />
         <div className="grid md:grid-cols-3 gap-5">
           {cards.map((card, i) => (
             <motion.div
@@ -30,7 +30,6 @@ export default function About() {
             >
               <div className="card-topline">
                 <i className={card.icon} aria-hidden="true" />
-                <span>0{i + 1}</span>
               </div>
               <h3>{card.title}</h3>
               <div

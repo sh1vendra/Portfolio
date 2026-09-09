@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
 
 interface SectionHeadingProps {
-  number: string
   title: string
   note: string
 }
 
-export default function SectionHeading({ number, title, note }: SectionHeadingProps) {
+export default function SectionHeading({ title, note }: SectionHeadingProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -16,10 +15,7 @@ export default function SectionHeading({ number, title, note }: SectionHeadingPr
       className="section-heading"
     >
       <div>
-        <p className="eyebrow">
-          <span className="section-number">{number}</span>
-          {note}
-        </p>
+        <p className="eyebrow">{note}</p>
         <h2>
           {title}
           <span className="accent-dot">.</span>

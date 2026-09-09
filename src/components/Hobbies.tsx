@@ -6,7 +6,7 @@ export default function Hobbies() {
   return (
     <section id="hobbies" className="page-section">
       <div className="section-container">
-        <SectionHeading number="05" title="Hobbies" note="Away from the keyboard" />
+        <SectionHeading title="Hobbies" note="Away from the keyboard" />
         <div className="hobby-list">
           {hobbies.map((hobby, i) => (
             <motion.span

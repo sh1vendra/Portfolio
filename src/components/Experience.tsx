@@ -6,7 +6,7 @@ export default function Experience() {
   return (
     <section id="experience" className="page-section">
       <div className="section-container">
-        <SectionHeading number="02" title="Experience" note="Learning by building" />
+        <SectionHeading title="Experience" note="Learning by building" />
         <div className="experience-timeline">
           {experience.map((job, i) => (
             <motion.div

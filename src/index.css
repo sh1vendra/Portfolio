@@ -92,7 +92,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.6;
   font-weight: 600;
   letter-spacing: 0.17em;
@@ -111,7 +111,7 @@
 }
 .section-number {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 13.2px;
   letter-spacing: 0.04em;
 }
 
@@ -165,7 +165,7 @@
   background: var(--accent);
 }
 .brand-name {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.45;
   font-weight: 700;
   letter-spacing: 0.025em;
@@ -180,7 +180,7 @@
   display: block;
   padding-block: 12px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 500;
   transition: color 0.2s;
 }
@@ -273,20 +273,34 @@
   display: flex;
   align-items: baseline;
   color: var(--accent);
-  font-size: clamp(14px, 1.5vw, 19px);
+  font-size: clamp(16.8px, 1.8vw, 22.8px);
   font-weight: 500;
   min-height: 58px;
+  white-space: nowrap;
 }
 .role-prefix {
   margin-right: 12px;
-  font-size: 22px;
+  font-size: 26.4px;
+}
+.role-text {
+  display: inline-grid;
+  text-align: left;
+}
+.role-text::after {
+  content: attr(data-longest-role) '|';
+  grid-area: 1 / 1;
+  visibility: hidden;
+  pointer-events: none;
+}
+.role-line {
+  grid-area: 1 / 1;
 }
 .typed-cursor {
   margin-left: 2px;
 }
 .hero-education {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15.6px;
   line-height: 1.85;
 }
 .hero-gpa {
@@ -295,7 +309,7 @@
   gap: 22px;
   margin-top: 20px;
   color: var(--text);
-  font-size: 21px;
+  font-size: 25.2px;
   font-weight: 600;
   letter-spacing: -0.025em;
 }
@@ -303,7 +317,7 @@
   display: block;
   margin-top: 1px;
   color: var(--quiet);
-  font-size: 9px;
+  font-size: 10.8px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -315,13 +329,13 @@
 }
 .hero-personal {
   margin-top: 25px;
-  font-size: 13px;
+  font-size: 15.6px;
   line-height: 1.9;
   color: var(--muted);
 }
 .hero-personal p + p {
   color: var(--quiet);
-  font-size: 11px;
+  font-size: 13.2px;
 }
 .hero-portrait {
   position: relative;
@@ -379,12 +393,12 @@
   justify-content: space-between;
   align-items: center;
   color: var(--quiet);
-  font-size: 8px;
+  font-size: 9.6px;
   letter-spacing: 0.13em;
   margin-top: 17px;
 }
 .hero-portrait figcaption > span:last-child {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--accent);
 }
 .hero-baseline {
@@ -395,7 +409,7 @@
   padding-top: 23px;
   border-top: 1px solid var(--line);
   color: var(--quiet);
-  font-size: 9px;
+  font-size: 10.8px;
   letter-spacing: 0.13em;
 }
 .hero-baseline a {
@@ -405,7 +419,7 @@
   color: var(--muted);
 }
 .hero-baseline a span {
-  font-size: 16px;
+  font-size: 19.2px;
   color: var(--accent);
 }
 
@@ -459,14 +473,14 @@
   border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 15.6px;
 }
 .card-topline > span {
   color: var(--quiet);
-  font-size: 10px;
+  font-size: 12px;
 }
 .about-card h3 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.02em;
   min-height: 42px;
@@ -489,7 +503,7 @@
   border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13.2px;
   line-height: 1.6;
 }
 .experience-timeline {
@@ -529,7 +543,7 @@
   margin-bottom: 22px;
 }
 .experience-header h3 {
-  font-size: 21px;
+  font-size: 25.2px;
   line-height: 1.3;
   font-weight: 500;
   letter-spacing: -0.035em;
@@ -537,11 +551,11 @@
 .company-name {
   color: var(--accent);
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .period {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   padding: 6px 9px;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -555,7 +569,7 @@
 .experience-bullets li {
   display: flex;
   gap: 12px;
-  font-size: 14px;
+  font-size: 16.8px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -577,11 +591,11 @@
   justify-content: space-between;
   gap: 10px;
   color: var(--quiet);
-  font-size: 9px;
+  font-size: 10.8px;
   letter-spacing: 0.1em;
 }
 .project-chrome > span:last-child {
-  font-size: 16px;
+  font-size: 19.2px;
   color: var(--accent);
 }
 .project-dots {
@@ -621,14 +635,14 @@
   padding: 26px;
 }
 .project-content h3 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1.4;
   margin-bottom: 13px;
 }
 .project-description {
-  font-size: 14px;
+  font-size: 16.8px;
   line-height: 1.85;
   color: var(--muted);
   margin-bottom: 24px;
@@ -641,7 +655,7 @@
   padding-bottom: 24px;
 }
 .tech-tag {
-  font-size: 10px;
+  font-size: 12px;
   padding: 5px 8px;
   line-height: 1.4;
   border: 1px solid var(--line);
@@ -655,7 +669,7 @@
   color: var(--text);
   border-top: 1px solid var(--line);
   padding-top: 18px;
-  font-size: 11px;
+  font-size: 13.2px;
 }
 .project-link > span:first-child {
   display: flex;
@@ -669,7 +683,7 @@
   height: 28px;
   border: 1px solid var(--line);
   border-radius: 50%;
-  font-size: 16px;
+  font-size: 19.2px;
   transition:
     color 0.2s,
     background 0.2s,
@@ -698,7 +712,7 @@
   width: 130px;
   flex-shrink: 0;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.6;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -716,14 +730,14 @@
   border: 1px solid var(--line);
   border-radius: 5px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13.2px;
   transition:
     color 0.2s,
     border-color 0.2s,
     background 0.2s;
 }
 .skill-chip i {
-  font-size: 14px;
+  font-size: 16.8px;
 }
 .skill-chip:hover {
   background: var(--soft);
@@ -744,14 +758,14 @@
   border: 1px solid var(--line);
   border-radius: 40px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14.4px;
   transition:
     background 0.2s,
     border-color 0.2s,
     color 0.2s;
 }
 .hobby-chip > span {
-  font-size: 17px;
+  font-size: 20.4px;
 }
 .hobby-chip:hover {
   background: var(--soft);
@@ -796,7 +810,7 @@
 }
 .contact-intro {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15.6px;
   line-height: 1.8;
 }
 .contact-email {
@@ -825,7 +839,7 @@
   border-block: 1px solid var(--line);
   padding-block: 18px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13.2px;
   transition:
     color 0.2s,
     border-color 0.2s;
@@ -853,7 +867,7 @@
   gap: 20px;
   color: var(--muted);
   border-top: 1px solid var(--line);
-  font-size: 9px;
+  font-size: 10.8px;
 }
 .footer-baseline a {
   display: flex;
@@ -863,7 +877,7 @@
 }
 .footer-baseline a span {
   color: var(--accent);
-  font-size: 16px;
+  font-size: 19.2px;
 }
 
 @media (min-width: 1440px) {
@@ -895,7 +909,7 @@
     font-size: clamp(60px, 8.5vw, 90px);
   }
   .hero-role {
-    font-size: 14px;
+    font-size: 16.8px;
   }
   .about-card {
     padding: 20px;
@@ -935,7 +949,7 @@
     align-items: center;
     justify-content: space-between;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 15.6px;
     padding: 12px 4px;
     border-bottom: 1px solid var(--line);
   }
@@ -964,11 +978,11 @@
     border-top-left-radius: 60px;
   }
   .hero-portrait figcaption {
-    font-size: 6px;
+    font-size: 7.2px;
     margin-top: 10px;
   }
   .hero-portrait figcaption > span:last-child {
-    font-size: 15px;
+    font-size: 18px;
   }
   .hero-copy {
     width: 100%;
@@ -985,11 +999,15 @@
   }
   .hero-role {
     justify-content: center;
-    font-size: 14px;
+    font-size: clamp(13px, 4.6vw, 16.8px);
     min-height: 44px;
   }
+  .role-prefix {
+    margin-right: 8px;
+    font-size: 22px;
+  }
   .hero-education {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .hero-gpa {
     justify-content: center;
@@ -999,7 +1017,7 @@
   }
   .hero-baseline {
     margin-top: 40px;
-    font-size: 7px;
+    font-size: 8.4px;
     letter-spacing: 0.07em;
     align-items: center;
   }
@@ -1017,7 +1035,7 @@
     margin-top: 12px;
   }
   .eyebrow {
-    font-size: 8px;
+    font-size: 9.6px;
     letter-spacing: 0.14em;
   }
   .section-mark {
@@ -1033,7 +1051,7 @@
     margin-bottom: 18px;
   }
   .detail-pill {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .timeline-entry {
     padding-left: 20px;
@@ -1046,10 +1064,10 @@
     gap: 14px;
   }
   .experience-header h3 {
-    font-size: 20px;
+    font-size: 24px;
   }
   .experience-bullets li {
-    font-size: 13px;
+    font-size: 15.6px;
   }
   .project-image {
     height: auto;
@@ -1071,7 +1089,7 @@
     gap: 9px;
   }
   .hobby-chip {
-    font-size: 11px;
+    font-size: 13.2px;
     padding: 12px 16px;
   }
   .contact-heading {
@@ -1083,10 +1101,10 @@
   .contact-cta {
     width: 46px;
     height: 46px;
-    font-size: 25px;
+    font-size: 30px;
   }
   .contact-intro {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .contact-links {
     grid-template-columns: repeat(2, 1fr);
@@ -1094,7 +1112,7 @@
     margin-top: 40px;
   }
   .footer-baseline {
-    font-size: 8px;
+    font-size: 9.6px;
     gap: 15px;
   }
 }

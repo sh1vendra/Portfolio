@@ -2,6 +2,15 @@ import { useEffect, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import Typed from 'typed.js'
 
+const roles = [
+  'Intel Ambassador',
+  'AI Agents & Systems',
+  'Forward Deployed Engineer',
+  'Agentic Software Developer',
+  'Athlete',
+  'Full-Stack Software Developer',
+]
+
 export default function Hero() {
   const typedRef = useRef<HTMLSpanElement>(null)
   const reducedMotion = useReducedMotion()
@@ -9,10 +18,11 @@ export default function Hero() {
   useEffect(() => {
     if (reducedMotion || !typedRef.current) return
     const typed = new Typed(typedRef.current, {
-      strings: ['Full-Stack Software Developer', 'Intel Ambassador', 'AI Agents & Systems'],
-      typeSpeed: 45,
-      backSpeed: 25,
-      backDelay: 3200,
+      strings: roles,
+      contentType: 'text',
+      typeSpeed: 25,
+      backSpeed: 12,
+      backDelay: 1000,
       loop: true,
       smartBackspace: true,
     })
@@ -44,14 +54,20 @@ export default function Hero() {
               <span className="role-prefix" aria-hidden="true">
                 ↳
               </span>
-              <span className="sr-only">
-                Full-Stack Software Developer, Intel Ambassador, AI Agents &amp; Systems
+              <span className="sr-only">{roles.join(', ')}</span>
+              <span
+                className="role-text"
+                data-longest-role="Full-Stack Software Developer"
+                aria-hidden="true"
+              >
+                <span className="role-line">
+                  {reducedMotion ? (
+                    <span>Full-Stack Software Developer</span>
+                  ) : (
+                    <span ref={typedRef} />
+                  )}
+                </span>
               </span>
-              {reducedMotion ? (
-                <span aria-hidden="true">Full-Stack Software Developer</span>
-              ) : (
-                <span ref={typedRef} aria-hidden="true" />
-              )}
             </div>
             <div className="hero-education">
               <p>Major: B.S. Computer Science, Minor: Applied Mathematics</p>

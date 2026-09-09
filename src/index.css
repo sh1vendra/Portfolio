@@ -110,82 +110,119 @@
 }
 .glow-bubble {
   position: absolute;
+  bottom: -90px;
+  left: var(--bubble-left);
   width: var(--bubble-size);
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 1px solid rgba(173, 255, 109, 0.19);
+  border: 1px solid rgba(191, 255, 132, 0.55);
   background:
-    radial-gradient(circle at 30% 25%, rgba(198, 255, 153, 0.16), transparent 55%),
-    radial-gradient(circle at 65% 75%, rgba(98, 232, 35, 0.13), rgba(98, 232, 35, 0.025) 70%);
+    radial-gradient(circle at 28% 25%, rgba(215, 255, 181, 0.38), transparent 38%),
+    radial-gradient(circle, rgba(115, 244, 51, 0.025) 40%, rgba(143, 255, 77, 0.14));
   box-shadow:
-    inset 0 0 45px rgba(143, 255, 77, 0.1),
-    0 0 60px rgba(113, 237, 48, 0.18),
-    0 0 110px rgba(113, 237, 48, 0.07);
+    inset 0 0 10px rgba(159, 255, 101, 0.22),
+    0 0 12px rgba(147, 255, 86, 0.48),
+    0 0 30px rgba(113, 237, 48, 0.24);
   will-change: transform;
-  animation: bubble-drift var(--duration) ease-in-out var(--delay) infinite alternate;
+  animation: bubble-float var(--duration) linear var(--delay) infinite;
 }
 .glow-bubble:nth-child(1) {
-  --bubble-size: clamp(230px, 30vw, 440px);
-  --duration: 22s;
-  --delay: -8s;
-  --drift-x: 75px;
-  --drift-y: 100px;
-  left: -12%;
-  top: 6%;
+  --bubble-size: 52px;
+  --bubble-left: 5%;
+  --rest-top: 18%;
+  --duration: 18s;
+  --delay: -4s;
+  --sway: 28px;
 }
 .glow-bubble:nth-child(2) {
-  --bubble-size: clamp(180px, 23vw, 340px);
-  --duration: 26s;
-  --delay: -18s;
-  --drift-x: -90px;
-  --drift-y: -75px;
-  right: -7%;
-  top: 47%;
+  --bubble-size: 38px;
+  --bubble-left: 89%;
+  --rest-top: 52%;
+  --duration: 15s;
+  --delay: -9s;
+  --sway: -24px;
 }
 .glow-bubble:nth-child(3) {
-  --bubble-size: clamp(110px, 14vw, 200px);
-  --duration: 19s;
-  --delay: -5s;
-  --drift-x: 80px;
-  --drift-y: -110px;
-  left: 20%;
-  bottom: -5%;
+  --bubble-size: 24px;
+  --bubble-left: 22%;
+  --rest-top: 80%;
+  --duration: 12s;
+  --delay: -7s;
+  --sway: 20px;
 }
 .glow-bubble:nth-child(4) {
-  --bubble-size: clamp(90px, 10vw, 150px);
-  --duration: 24s;
-  --delay: -14s;
-  --drift-x: -75px;
-  --drift-y: 95px;
-  right: 25%;
-  top: -4%;
+  --bubble-size: 44px;
+  --bubble-left: 72%;
+  --rest-top: 12%;
+  --duration: 20s;
+  --delay: -16s;
+  --sway: -32px;
 }
 .glow-bubble:nth-child(5) {
-  --bubble-size: 76px;
-  --duration: 17s;
-  --delay: -11s;
-  --drift-x: 60px;
-  --drift-y: -80px;
-  left: 7%;
-  top: 67%;
+  --bubble-size: 18px;
+  --bubble-left: 11%;
+  --rest-top: 62%;
+  --duration: 11s;
+  --delay: -8s;
+  --sway: 18px;
 }
 .glow-bubble:nth-child(6) {
-  --bubble-size: 110px;
-  --duration: 21s;
-  --delay: -3s;
-  --drift-x: -70px;
-  --drift-y: 90px;
-  right: 12%;
-  top: 14%;
+  --bubble-size: 32px;
+  --bubble-left: 94%;
+  --rest-top: 31%;
+  --duration: 16s;
+  --delay: -4s;
+  --sway: -26px;
 }
-@keyframes bubble-drift {
-  from {
-    transform: translate3d(0, 0, 0) scale(0.94);
-    opacity: 0.65;
+.glow-bubble:nth-child(7) {
+  --bubble-size: 64px;
+  --bubble-left: 36%;
+  --rest-top: 88%;
+  --duration: 22s;
+  --delay: -13s;
+  --sway: 34px;
+}
+.glow-bubble:nth-child(8) {
+  --bubble-size: 22px;
+  --bubble-left: 59%;
+  --rest-top: 20%;
+  --duration: 14s;
+  --delay: -6s;
+  --sway: -22px;
+}
+.glow-bubble:nth-child(9) {
+  --bubble-size: 28px;
+  --bubble-left: 80%;
+  --rest-top: 72%;
+  --duration: 17s;
+  --delay: -12s;
+  --sway: 24px;
+}
+.glow-bubble:nth-child(10) {
+  --bubble-size: 16px;
+  --bubble-left: 47%;
+  --rest-top: 43%;
+  --duration: 13s;
+  --delay: -2s;
+  --sway: -18px;
+}
+@keyframes bubble-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0;
   }
-  to {
-    transform: translate3d(var(--drift-x), var(--drift-y), 0) scale(1.08);
-    opacity: 1;
+  8%, 90% {
+    opacity: 0.9;
+  }
+  30% {
+    transform: translate3d(var(--sway), -36svh, 0) scale(1);
+  }
+  65% {
+    transform: translate3d(calc(var(--sway) * -0.5), -78svh, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(var(--sway), calc(-100svh - 180px), 0) scale(1.05);
+    opacity: 0;
   }
 }
 #main-content,
@@ -967,14 +1004,11 @@
   }
 }
 @media (max-width: 767px) {
-  .glow-bubble:nth-child(n + 5) {
+  .glow-bubble {
+    width: calc(var(--bubble-size) * 0.75);
+  }
+  .glow-bubble:nth-child(n + 7) {
     display: none;
-  }
-  .glow-bubble:nth-child(1) {
-    left: -40%;
-  }
-  .glow-bubble:nth-child(2) {
-    right: -30%;
   }
   html {
     scroll-padding-top: 90px;
@@ -1168,6 +1202,8 @@
   .glow-bubble {
     animation: none !important;
     will-change: auto;
+    top: var(--rest-top);
+    bottom: auto;
     opacity: 0.8;
   }
   html {

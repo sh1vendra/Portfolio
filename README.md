@@ -22,7 +22,7 @@ Personal portfolio website showcasing my projects, skills, and professional expe
 
 ## Features
 
-- **Dark theme** — near-black and lime styling with subtle atmospheric glow
+- **Dark theme** — near-black and lime styling with glowing green bubbles drifting behind every section; stationary when reduced motion is preferred
 - **Smooth animations** — Framer Motion scroll-triggered entrance animations throughout
 - **Typing animation** — cycles through roles in the hero section, with a static alternative for reduced-motion preferences
 - **Project showcase** — project cards with browser mockup frames, screenshots, tech tags, and GitHub links
@@ -40,6 +40,7 @@ Personal portfolio website showcasing my projects, skills, and professional expe
 src/
 ├── components/
 │   ├── Navbar.tsx
+│   ├── AmbientBackground.tsx
 │   ├── Hero.tsx
 │   ├── About.tsx
 │   ├── Projects.tsx

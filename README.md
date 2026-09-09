@@ -22,10 +22,10 @@ Personal portfolio website showcasing my projects, skills, and professional expe
 
 ## Features
 
-- **Dark / Light theme** — toggle with persistent localStorage preference
+- **Dark theme** — near-black and lime styling with subtle atmospheric glow
 - **Smooth animations** — Framer Motion scroll-triggered entrance animations throughout
-- **Typing animation** — cycles through roles in the hero section
-- **Project showcase** — 5 project cards with browser mockup frames, screenshots, tech tags, and GitHub links
+- **Typing animation** — cycles through roles in the hero section, with a static alternative for reduced-motion preferences
+- **Project showcase** — project cards with browser mockup frames, screenshots, tech tags, and GitHub links
 - **Categorized skills** — icon + label pills grouped by Languages, Frontend, Backend, Databases, and Tools
 - **Experience timeline** — vertical timeline layout with 3 professional positions
 - **Fully responsive** — mobile-first layout with hamburger navigation
@@ -44,6 +44,8 @@ src/
 │   ├── About.tsx
 │   ├── Projects.tsx
 │   ├── Skills.tsx
+│   ├── Hobbies.tsx
+│   ├── SectionHeading.tsx
 │   ├── Experience.tsx
 │   ├── Contact.tsx
 │   └── Footer.tsx
@@ -54,7 +56,7 @@ src/
 └── index.css
 public/
 └── assets/
-    ├── headshot.jpg
+    ├── portrait.jpg   # Optimized portrait, displayed without cropping
     └── projects/      # Project screenshots
 ```
 

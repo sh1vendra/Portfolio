@@ -1,128 +1,106 @@
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import Typed from 'typed.js'
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
-}
 
 export default function Hero() {
   const typedRef = useRef<HTMLSpanElement>(null)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
-    const typed = new Typed(typedRef.current!, {
-      strings: [
-        'Full-Stack Software Developer',
-        'Intel Ambassador',
-        'AI Agents & Systems',
-      ],
-      typeSpeed: 40,
-      backSpeed: 28,
-      backDelay: 2200,
+    if (reducedMotion || !typedRef.current) return
+    const typed = new Typed(typedRef.current, {
+      strings: ['Full-Stack Software Developer', 'Intel Ambassador', 'AI Agents & Systems'],
+      typeSpeed: 45,
+      backSpeed: 25,
+      backDelay: 3200,
       loop: true,
       smartBackspace: true,
-      contentType: null as unknown as string,
     })
     return () => typed.destroy()
-  }, [])
+  }, [reducedMotion])
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center bg-gray-50 dark:bg-navy-950 overflow-hidden"
-    >
-      {/* Dot grid background */}
-      <div className="absolute inset-0 dot-grid-light dark:dot-grid pointer-events-none" />
-
-      {/* Radial glow */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold-500/5 dark:bg-gold-500/8 blur-3xl pointer-events-none" />
-
-      <div className="section-container w-full relative z-10 pt-24 pb-20">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16">
-          {/* Text */}
+    <section id="hero" className="hero-section">
+      <div className="hero-atmosphere" aria-hidden="true" />
+      <div className="section-container hero-container">
+        <div className="hero-layout">
           <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="flex-1 max-w-xl text-center md:text-left"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="hero-copy"
           >
-            <motion.p
-              variants={item}
-              className="text-sm font-semibold tracking-[0.2em] uppercase text-gray-400 dark:text-white/35 mb-3"
-            >
+            <p className="eyebrow hero-eyebrow">
+              <span className="status-dot" />
               Hello, I'm
-            </motion.p>
-
-            <motion.h1 variants={item} className="font-extrabold leading-[1.05] mb-5">
-              <span className="text-6xl md:text-7xl lg:text-8xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-white dark:to-gold-400 bg-clip-text text-transparent">
-                Shivendra
-              </span>
+            </p>
+            <h1>
+              Shivendra
               <br />
-              <span className="text-6xl md:text-7xl lg:text-8xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-white dark:to-gold-400 bg-clip-text text-transparent">
-                Bhagat
+              <span>Bhagat</span>
+              <span className="accent-dot">.</span>
+            </h1>
+            <div className="hero-role">
+              <span className="role-prefix" aria-hidden="true">
+                ↳
               </span>
-            </motion.h1>
-
-            <motion.div
-              variants={item}
-              className="text-xl md:text-2xl font-bold text-gold-600 dark:text-gold-500 mb-6 min-h-[1.8em]"
-            >
-              <span ref={typedRef} />
-            </motion.div>
-
-            <motion.p variants={item} className="text-base text-gray-500 dark:text-white/45 mb-1.5">
-              Major: B.S. Computer Science, Minor: Applied Mathematics
-            </motion.p>
-            <motion.p variants={item} className="text-base text-gray-500 dark:text-white/45 mb-1.5">
-              Honors College, Texas State University
-            </motion.p>
-            <motion.p variants={item} className="text-base font-semibold text-gray-700 dark:text-white/75 mb-3">
-              GPA: 4.0 CS Major / 3.90 Overall
-            </motion.p>
-
-            <motion.p
-              variants={item}
-              className="text-base italic text-gray-400 dark:text-white/30"
-            >
-              Building software that solves real problems.
-            </motion.p>
-
-            <motion.p
-              variants={item}
-              className="text-base italic text-gray-400 dark:text-white/30"
-            >
-              I write code. Coffee writes me. ☕
-            </motion.p>
-          </motion.div>
-
-          {/* Portrait */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="flex-shrink-0"
-          >
-            <div className="relative">
-              {/* Glow ring */}
-              <div className="absolute inset-0 rounded-full bg-gold-500/20 blur-2xl scale-110" />
-              {/* Outer ring */}
-              <div className="absolute -inset-1.5 rounded-full border-2 border-gold-500/30" />
-              <img
-                src="/assets/headshot.jpg"
-                alt="Shivendra Bhagat"
-                className="w-40 h-40 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full object-cover object-top border-2 border-gold-500/50 relative shadow-2xl shadow-black/30"
-              />
+              <span className="sr-only">
+                Full-Stack Software Developer, Intel Ambassador, AI Agents &amp; Systems
+              </span>
+              {reducedMotion ? (
+                <span aria-hidden="true">Full-Stack Software Developer</span>
+              ) : (
+                <span ref={typedRef} aria-hidden="true" />
+              )}
+            </div>
+            <div className="hero-education">
+              <p>Major: B.S. Computer Science, Minor: Applied Mathematics</p>
+              <p>Honors College, Texas State University</p>
+              <p className="hero-gpa">
+                <span>
+                  4.0 <small>CS Major GPA</small>
+                </span>
+                <span className="gpa-divider" />
+                <span>
+                  3.90 <small>Overall GPA</small>
+                </span>
+              </p>
+            </div>
+            <div className="hero-personal">
+              <p>Building software that solves real problems.</p>
+              <p>
+                I write code. Coffee writes me. <span aria-label="coffee">☕</span>
+              </p>
             </div>
           </motion.div>
+          <motion.figure
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="hero-portrait"
+          >
+            <div className="portrait-frame">
+              <img
+                src="/assets/portrait.jpg"
+                alt="Shivendra Bhagat standing beside the water at dusk"
+                width="960"
+                height="1440"
+                fetchPriority="high"
+              />
+              <span className="portrait-corner corner-top" aria-hidden="true" />
+              <span className="portrait-corner corner-bottom" aria-hidden="true" />
+            </div>
+            <figcaption>
+              <span>THE PERSON BEHIND THE CODE</span>
+              <span aria-hidden="true">↗</span>
+            </figcaption>
+          </motion.figure>
+        </div>
+        <div className="hero-baseline">
+          <span>SOFTWARE · AI · HUMAN CURIOSITY</span>
+          <a href="#about">
+            SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
     </section>

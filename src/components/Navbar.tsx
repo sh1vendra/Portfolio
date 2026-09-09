@@ -1,10 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 
-interface NavbarProps {
-  theme: 'dark' | 'light'
-  toggleTheme: () => void
-}
-
 const links = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
@@ -15,7 +10,7 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export default function Navbar({ theme, toggleTheme }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('#hero')
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -65,83 +60,76 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
 
   const goHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    })
     history.replaceState(null, '', window.location.pathname)
     lockActive('#hero')
     closeMobile()
   }
 
-  return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/90 dark:bg-navy-950/90 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.06] shadow-sm dark:shadow-black/30'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center gap-6">
-        <a
-          href="https://shivendrabhagat.com"
-          className="font-extrabold text-4xl text-gray-900 dark:text-white mr-auto hover:text-gold-600 dark:hover:text-gold-500 transition-colors"
-          style={{ fontFamily: "'Dancing Script', 'Brush Script MT', cursive" }}
-        >
-          Shivendra Bhagat
-        </a>
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      if (lockTimer.current) window.clearTimeout(lockTimer.current)
+    }
+  }, [])
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-1">
+  return (
+    <header className={`site-header ${scrolled || mobileOpen ? 'is-scrolled' : ''}`}>
+      <nav className="section-container nav-inner" aria-label="Main navigation">
+        <a href="#hero" onClick={goHome} className="nav-brand" aria-label="Shivendra Bhagat, home">
+          <span className="brand-symbol" aria-hidden="true">
+            s<span>b</span>
+            <i />
+          </span>
+          <span className="brand-name">
+            Shivendra
+            <br />
+            Bhagat
+          </span>
+        </a>
+        <ul className="desktop-nav">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 onClick={link.href === '#hero' ? goHome : () => onSectionClick(link.href)}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                  active === link.href
-                    ? 'text-gold-600 dark:text-gold-500 bg-gold-500/10'
-                    : 'text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05]'
-                }`}
+                className={active === link.href ? 'is-active' : ''}
+                aria-current={active === link.href ? 'location' : undefined}
               >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
-
-        {/* Theme toggle */}
         <button
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="w-8 h-8 rounded-full flex items-center justify-center text-gray-500 dark:text-white/40 hover:text-gold-600 dark:hover:text-gold-500 hover:bg-gold-500/10 border border-black/[0.08] dark:border-white/[0.08] transition-all duration-200 text-sm"
-        >
-          <i className={theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'} />
-        </button>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden w-8 h-8 flex items-center justify-center text-gray-700 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
+          className="menu-toggle"
           onClick={() => setMobileOpen((o) => !o)}
-          aria-label="Toggle menu"
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
-          <i className={mobileOpen ? 'fas fa-times' : 'fas fa-bars'} />
+          <i className={mobileOpen ? 'fas fa-times' : 'fas fa-bars'} aria-hidden="true" />
         </button>
       </nav>
-
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white/95 dark:bg-navy-950/95 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.06] px-6 py-4 flex flex-col gap-1">
+        <div id="mobile-navigation" className="mobile-nav">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={link.href === '#hero' ? goHome : () => onSectionClick(link.href)}
-              className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                active === link.href
-                  ? 'text-gold-600 dark:text-gold-500 bg-gold-500/10'
-                  : 'text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05]'
-              }`}
+              className={active === link.href ? 'is-active' : ''}
+              aria-current={active === link.href ? 'location' : undefined}
             >
               {link.label}
+              <span aria-hidden="true">↗</span>
             </a>
           ))}
         </div>

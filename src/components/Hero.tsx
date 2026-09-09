@@ -112,12 +112,6 @@ export default function Hero() {
             </figcaption>
           </motion.figure>
         </div>
-        <div className="hero-baseline">
-          <span>SOFTWARE · AI · HUMAN CURIOSITY</span>
-          <a href="#about">
-            SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
-          </a>
-        </div>
       </div>
     </section>
   )

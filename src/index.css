@@ -1065,33 +1065,45 @@
 }
 .contact-links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 60px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 48px;
 }
 .contact-links a {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  border-block: 1px solid var(--line);
-  padding-block: 18px;
+  min-width: 0;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 13px 12px;
+  background: rgba(16, 20, 16, 0.66);
   color: var(--muted);
-  font-size: 13.2px;
+  font-size: 12px;
+  font-weight: 600;
   transition:
+    background 0.2s,
     color 0.2s,
-    border-color 0.2s;
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 .contact-links a > span:first-child {
   display: flex;
   align-items: center;
-  gap: 10px;
+  min-width: 0;
+  gap: 8px;
+  white-space: nowrap;
 }
 .contact-links a > span:last-child {
+  flex: 0 0 auto;
   color: var(--accent);
 }
 .contact-links a:hover {
+  background: rgba(176, 239, 114, 0.1);
   color: var(--text);
   border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(176, 239, 114, 0.12);
 }
 .site-footer {
   background: rgba(8, 10, 9, 0.35);

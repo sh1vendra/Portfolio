@@ -10,14 +10,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: 'BioTwin — Personal Health Twin',
+    name: 'BioTwin — AI Wellness Coach',
     description:
-      'A conversational personal health twin that turns wearable data into clear readiness insights, spoken answers, and calendar-aware workout planning. Built for HackRice 16 at Rice University in 2026.',
+      'Wearables give you numbers. BioTwin gives you understanding. Your watch tells you what happened. BioTwin tells you what it means. A conversational AI wellness coach for readiness insights, spoken answers, and calendar-aware workout planning. Built for HackRice 16 at Rice University in 2026.',
     tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Three.js', 'Gemini', 'ElevenLabs', 'Garmin API'],
     github: 'https://github.com/HackRice2026/BioTwin',
     youtube: 'https://youtu.be/T8H4S3MSeT4',
     screenshot: '/assets/projects/biotwin.png',
-    alt: 'BioTwin personal health dashboard with a digital twin and voice assistant',
+    alt: 'BioTwin AI wellness coach dashboard with a voice assistant',
   },
   {
     name: 'Reel Studio - Autonomous Cinematic Reel Engine',

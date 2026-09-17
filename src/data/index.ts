@@ -76,15 +76,6 @@ export const projects: Project[] = [
     alt: 'GTM Content Agent chat interface',
   },
   {
-    name: 'Weather App',
-    description:
-      'Real-time weather application with 5-day forecast, geolocation detection, detailed metrics (humidity, wind, pressure, sunrise/sunset), and dynamic backgrounds matching current conditions.',
-    tags: ['React 18', 'TypeScript', 'OpenWeatherMap API', 'CSS Animations', 'Vercel'],
-    github: 'https://github.com/sh1vendra/Weather_App',
-    screenshot: '/assets/projects/weather.png',
-    alt: 'Weather App showing forecast',
-  },
-  {
     name: 'Space Invaders - Save the World',
     description:
       'Modern Java implementation of the classic Space Invaders arcade game with customizable graphics, dynamic music system, character/enemy selection, and progressive difficulty scaling.',
@@ -92,15 +83,6 @@ export const projects: Project[] = [
     github: 'https://github.com/sh1vendra/Space_Invaders',
     screenshot: '/assets/projects/spaceinvaders.png',
     alt: 'Space Invaders gameplay',
-  },
-  {
-    name: 'Soma - Physique Analyzer',
-    description:
-      'Modern, interactive BMI Calculator with real-time computation, metric/imperial units, health scale visualization, healthy weight range estimates, and recent results tracking with a mini chart.',
-    tags: ['React', 'TypeScript'],
-    github: 'https://github.com/sh1vendra/BMI_Calculator',
-    screenshot: '/assets/projects/bmi.png',
-    alt: 'BMI Calculator application',
   },
 ]
 

@@ -10,6 +10,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: 'BioTwin — Personal Health Twin',
+    description:
+      'A conversational personal health twin that turns wearable data into clear readiness insights, spoken answers, and calendar-aware workout planning. Built for HackRice 16 at Rice University in 2026.',
+    tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Three.js', 'Gemini', 'ElevenLabs', 'Garmin API'],
+    github: 'https://github.com/HackRice2026/BioTwin',
+    youtube: 'https://youtu.be/T8H4S3MSeT4',
+    screenshot: '/assets/projects/biotwin.png',
+    alt: 'BioTwin personal health dashboard with a digital twin and voice assistant',
+  },
+  {
     name: 'Reel Studio - Autonomous Cinematic Reel Engine',
     description:
       'An autonomous AI pipeline that turns real estate listing photos into fully cinematic, beat-synced videos ready for YouTube, Instagram, and TikTok in under 5 minutes. Built at the AITX x Codex Hackathon in Austin, TX. Three AI agents, ImageAnalyzer, ShotMatcher, and StoryboardBuilder, orchestrate photo classification, narrative storyboard sequencing, and cinematic prompt selection. FAL Kling v1.6 generates video clips per photo, librosa extracts BPM for beat-synced cuts, and FFmpeg assembles the final 1080p MP4.',

@@ -7,7 +7,7 @@ interface MotionOptions {
   count: number
 }
 
-const BASE_SPEED = 48 // pixels per second, toward the left
+const BASE_SPEED = 96 // pixels per second, toward the left
 const INTRO_RIGHT_INSET = 24
 const clamp = (value: number, limit: number) => Math.max(-limit, Math.min(limit, value))
 const wrap = (value: number, width: number) => ((value % width) + width) % width

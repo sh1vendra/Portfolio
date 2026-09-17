@@ -142,7 +142,7 @@ The component hierarchy is `MomentsSection` → `MomentsMarquee` → `MomentCard
 `useMarqueeMotion` updates a transformed, triplicated track with `requestAnimationFrame`
 without React rerenders on animation frames. Motion pauses offscreen, in a hidden tab,
 on keyboard focus, or when expanded. Horizontal wheel input and dragging change velocity,
-which eases back to 48 pixels/second leftward; vertical input remains page scrolling.
+which eases back to 96 pixels/second leftward; vertical input remains page scrolling.
 The one-time cinematic opening remains stationary until 30% of the Moments viewport is
 visible, with the first Moment parked at the right edge. It then joins the seamless loop
 without resetting when the section is revisited. Decorative loop copies are hidden from

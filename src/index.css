@@ -745,7 +745,49 @@
 .coursework-scroll {
   max-height: 260px;
   overflow-y: auto;
-  padding-right: 5px;
+  padding-right: 8px;
+  scrollbar-width: auto;
+  scrollbar-color: var(--accent) rgba(176, 239, 114, 0.12);
+}
+.coursework-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.coursework-scroll::-webkit-scroll-track {
+  border-radius: 999px;
+  background: rgba(176, 239, 114, 0.1);
+}
+.coursework-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid var(--surface);
+  border-radius: 999px;
+  background: var(--accent);
+}
+.coursework-scroll-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 72%, var(--line));
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(176, 239, 114, 0.2), rgba(176, 239, 114, 0.08));
+  color: #e4ffc7;
+  box-shadow: 0 0 22px rgba(176, 239, 114, 0.16);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.coursework-scroll-button i {
+  color: var(--accent);
+  font-size: 13px;
+}
+.coursework-scroll-button:hover,
+.coursework-scroll-button:focus-visible {
+  background: rgba(176, 239, 114, 0.28);
+  box-shadow: 0 0 28px rgba(176, 239, 114, 0.3);
 }
 .detail-pill {
   padding: 7px 10px;

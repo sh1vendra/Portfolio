@@ -16,10 +16,16 @@ const urls = import.meta.glob<string>('../assets/moments/.generated/*.webp', {
 // Use only when a meaningful display name cannot be derived from a filename.
 const captionOverrides: Record<string, string> = {
   'Computer Sciecle Excellence Awardee.jpg': 'Computer Science Excellence Awardee',
+  'Meta AITX Hackathon 2026 2.jpg': 'Meta AITX Hackathon 2024',
   'WebAI_hackathon.jpg': 'WebAI Community Hackathon 2025',
   'TXST Datahon 2024.jpeg': 'TXST Datathon 2024',
   'Datathon_2024.jpg': 'TXST Datathon 2025',
   'TXST Shipaton 2026 .jpg': 'TXST Shipaton Hackathon 2026',
+}
+
+// Source filenames remain stable; use this only when an embedded event year is wrong.
+const yearOverrides: Record<string, number> = {
+  'Meta AITX Hackathon 2026 2.jpg': 2024,
 }
 
 interface MomentPresentation {
@@ -52,13 +58,17 @@ interface GeneratedMoment {
   width: number
   height: number
   sources: { file: string; width: number }[]
+  sortYear?: number
 }
 
 // Explicit typing also supports a freshly generated, completely empty collection.
-const generatedMoments: GeneratedMoment[] = generated
+const generatedMoments: GeneratedMoment[] = generated.map((item) => ({
+  ...item,
+  sortYear: yearOverrides[item.filename],
+}))
 const ordered = sortMomentsWithPriorities(generatedMoments)
 
-export const moments: Moment[] = ordered.map((item) => {
+export const moments: Moment[] = ordered.map(({ sortYear: _sortYear, ...item }) => {
   const sourceUrl = (file: string) => urls[`../assets/moments/.generated/${file}`]
   return {
     ...item,

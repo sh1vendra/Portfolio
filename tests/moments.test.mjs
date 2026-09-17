@@ -39,6 +39,16 @@ test('recency wins over alphabetical order and undated photos are last', () => {
   assert.deepEqual(input.map((item) => item.filename), filenames, 'does not mutate source data')
 })
 
+test('a centralized sort-year override corrects a source filename without renaming it', () => {
+  const items = [
+    { filename: 'Meta AITX Hackathon 2026 2.jpg', sortYear: 2024 },
+    { filename: 'Other Hackathon 2025.jpg' },
+  ]
+  assert.deepEqual(sortMoments(items).map((item) => item.filename), [
+    'Other Hackathon 2025.jpg', 'Meta AITX Hackathon 2026 2.jpg',
+  ])
+})
+
 test('same-year captions provide a secondary key; identical captions remain stable', () => {
   const input = ['Z 2026.jpg', 'HackRice 2026 3.jpg', 'HackRice 2026 1.jpg', 'A 2026.jpg']
     .map((filename) => ({ filename }))

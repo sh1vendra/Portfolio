@@ -832,10 +832,6 @@
   font-size: 10.8px;
   letter-spacing: 0.1em;
 }
-.project-chrome > span:last-child {
-  font-size: 19.2px;
-  color: var(--accent);
-}
 .project-dots {
   display: flex;
   gap: 5px;
@@ -900,39 +896,24 @@
   color: var(--muted);
   border-radius: 4px;
 }
-.project-link {
+.project-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: var(--text);
+  flex-wrap: wrap;
+  gap: 18px;
   border-top: 1px solid var(--line);
   padding-top: 18px;
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text);
   font-size: 13.2px;
 }
 .project-link > span:first-child {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-.link-arrow {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  font-size: 19.2px;
-  transition:
-    color 0.2s,
-    background 0.2s,
-    transform 0.2s;
-}
-.project-link:hover .link-arrow,
-.project-link:focus-visible .link-arrow {
-  color: #14200e;
-  background: var(--accent-bright);
-  transform: rotate(45deg);
-  border-color: var(--accent-bright);
 }
 .skills-list {
   display: flex;

@@ -1,10 +1,21 @@
-export const projects = [
+export interface Project {
+  name: string
+  description: string
+  tags: string[]
+  github: string
+  youtube?: string
+  screenshot: string
+  alt: string
+}
+
+export const projects: Project[] = [
   {
     name: 'Reel Studio - Autonomous Cinematic Reel Engine',
     description:
       'An autonomous AI pipeline that turns real estate listing photos into fully cinematic, beat-synced videos ready for YouTube, Instagram, and TikTok in under 5 minutes. Built at the AITX x Codex Hackathon in Austin, TX. Three AI agents, ImageAnalyzer, ShotMatcher, and StoryboardBuilder, orchestrate photo classification, narrative storyboard sequencing, and cinematic prompt selection. FAL Kling v1.6 generates video clips per photo, librosa extracts BPM for beat-synced cuts, and FFmpeg assembles the final 1080p MP4.',
     tags: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'GPT-4o Vision', 'FAL Kling', 'FFmpeg', 'librosa', 'SQLite', 'Tailwind CSS'],
     github: 'https://github.com/AITX-codex-hackathon/Reel_Studio',
+    youtube: 'https://youtu.be/6LO9okS1TD0',
     screenshot: '/assets/projects/reelstudio.png',
     alt: 'ReelStudio AI real estate video generator',
   },

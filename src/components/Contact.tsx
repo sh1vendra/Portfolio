@@ -9,6 +9,7 @@ const links = [
   { label: 'GitHub', icon: 'fab fa-github', href: 'https://github.com/sh1vendra' },
   { label: 'Email', icon: 'fas fa-envelope', href: 'mailto:shivendra@txstate.edu' },
   { label: 'X', icon: 'fab fa-x-twitter', href: 'https://x.com/Shiv_endra_007' },
+  { label: 'YouTube', icon: 'fab fa-youtube', href: 'https://www.youtube.com/@ShivendraBhagat' },
 ]
 
 export default function Contact() {

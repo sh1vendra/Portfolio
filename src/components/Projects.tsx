@@ -23,7 +23,6 @@ export default function Projects() {
                   <i />
                   <i />
                 </span>
-                <span aria-hidden="true">↗</span>
               </div>
               <div className="project-image">
                 <img src={project.screenshot} alt={project.alt} loading="lazy" />
@@ -38,20 +37,32 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                  aria-label={`View ${project.name} on GitHub`}
-                >
-                  <span>
-                    <i className="fab fa-github" aria-hidden="true" /> View on GitHub
-                  </span>
-                  <span className="link-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </a>
+                <div className="project-actions">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link"
+                    aria-label={`View ${project.name} on GitHub`}
+                  >
+                    <span>
+                      <i className="fab fa-github" aria-hidden="true" /> View on GitHub
+                    </span>
+                  </a>
+                  {project.youtube && (
+                    <a
+                      href={project.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                      aria-label={`Watch ${project.name} on YouTube`}
+                    >
+                      <span>
+                        <i className="fab fa-youtube" aria-hidden="true" /> View on YouTube
+                      </span>
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.article>
           ))}

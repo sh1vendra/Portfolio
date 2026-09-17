@@ -282,9 +282,7 @@
   flex-shrink: 0;
 }
 .brand-symbol {
-  position: relative;
   display: inline-block;
-  isolation: isolate;
   padding: 0.1em 0.25em 0.14em 0.06em;
   font-family: 'Lobster', cursive;
   font-size: 62px;
@@ -301,48 +299,6 @@
     drop-shadow(0 0 12px rgba(176, 239, 114, 0.7))
     drop-shadow(0 0 28px rgba(104, 224, 53, 0.4));
   transform: rotate(-4deg);
-  transition: filter 220ms ease, transform 220ms ease;
-}
-.brand-symbol::before,
-.brand-symbol::after {
-  position: absolute;
-  z-index: 1;
-  color: #edffda;
-  font-family: Arial, sans-serif;
-  font-size: 0.28em;
-  line-height: 1;
-  text-shadow: 0 0 5px #edffda, 0 0 13px var(--accent), 0 0 24px rgba(126, 219, 70, 0.8);
-  animation: brand-sparkle 1.9s ease-in-out infinite;
-  pointer-events: none;
-}
-.brand-symbol::before {
-  content: '✦';
-  top: -0.22em;
-  right: -0.08em;
-}
-.brand-symbol::after {
-  content: '✧';
-  bottom: -0.1em;
-  left: -0.14em;
-  animation-delay: -0.85s;
-}
-.nav-brand:hover .brand-symbol,
-.nav-brand:focus-visible .brand-symbol {
-  filter:
-    drop-shadow(0 0 5px rgba(238, 255, 218, 1))
-    drop-shadow(0 0 16px rgba(176, 239, 114, 0.95))
-    drop-shadow(0 0 36px rgba(104, 224, 53, 0.62));
-  transform: rotate(-2deg) scale(1.04);
-}
-@keyframes brand-sparkle {
-  0%, 100% {
-    opacity: 0.42;
-    transform: scale(0.72) rotate(0deg);
-  }
-  48% {
-    opacity: 1;
-    transform: scale(1.24) rotate(30deg);
-  }
 }
 .desktop-nav {
   display: flex;

@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 interface MotionOptions {
   reducedMotion: boolean
@@ -8,6 +8,7 @@ interface MotionOptions {
 }
 
 const BASE_SPEED = 48 // pixels per second, toward the left
+const INTRO_RIGHT_INSET = 24
 const clamp = (value: number, limit: number) => Math.max(-limit, Math.min(limit, value))
 const wrap = (value: number, width: number) => ((value % width) + width) % width
 
@@ -17,6 +18,7 @@ export function useMarqueeMotion(options: MotionOptions) {
   const groupRef = useRef<HTMLDivElement>(null)
   const latest = useRef(options)
   latest.current = options
+  const [introActive, setIntroActive] = useState(() => !options.reducedMotion)
   const controls = useRef<{
     center: (index: number, followLayout?: boolean) => void
     step: (direction: number) => void
@@ -34,9 +36,12 @@ export function useMarqueeMotion(options: MotionOptions) {
     if (!viewport || !track || !group || !options.count) return
 
     const reduced = options.reducedMotion
+    setIntroActive(!reduced)
     if (!reduced) viewport.scrollLeft = 0
     let groupWidth = group.getBoundingClientRect().width
     let viewportWidth = viewport.clientWidth
+    let firstCardWidth = (group.children[0] as HTMLElement | undefined)?.offsetWidth ?? 0
+    let intro = !reduced
     let position = 0
     let velocity = 0
     let frame = 0
@@ -50,7 +55,8 @@ export function useMarqueeMotion(options: MotionOptions) {
     } | null = null
 
     const paint = () => {
-      if (!reduced) track.style.transform = `translate3d(${-groupWidth - position}px, 0, 0)`
+      const introOffset = intro ? Math.max(0, viewportWidth - firstCardWidth - INTRO_RIGHT_INSET) : 0
+      if (!reduced) track.style.transform = `translate3d(${-groupWidth + introOffset - position}px, 0, 0)`
     }
     const itemCenter = (index: number) => {
       const card = group.children[index] as HTMLElement | undefined
@@ -95,6 +101,13 @@ export function useMarqueeMotion(options: MotionOptions) {
         const target = stopped ? 0 : BASE_SPEED
         velocity += (target - velocity) * (1 - Math.exp(-3.5 * dt))
         position += velocity * dt
+        const introOffset = Math.max(0, viewportWidth - firstCardWidth - INTRO_RIGHT_INSET)
+        if (intro && position >= introOffset) {
+          // Preserve the exact rendered position as the intro joins the loop.
+          position -= introOffset
+          intro = false
+          setIntroActive(false)
+        }
         if (groupWidth && ((!focused && latest.current.expandedIndex < 0)
           || position < -viewportWidth || position > groupWidth + viewportWidth)) {
           position = wrap(position, groupWidth)
@@ -111,15 +124,16 @@ export function useMarqueeMotion(options: MotionOptions) {
     const resize = new ResizeObserver(() => {
       groupWidth = group.getBoundingClientRect().width
       viewportWidth = viewport.clientWidth
+      firstCardWidth = (group.children[0] as HTMLElement | undefined)?.offsetWidth ?? 0
       if (reduced && latest.current.expandedIndex >= 0) center(latest.current.expandedIndex)
       paint()
     })
     resize.observe(group)
     resize.observe(viewport)
     const intersection = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting
+      visible = entry.isIntersecting && entry.intersectionRatio >= 0.3
       updateRunning()
-    })
+    }, { threshold: [0, 0.3] })
     intersection.observe(viewport)
 
     const wheel = (event: WheelEvent) => {
@@ -236,5 +250,5 @@ export function useMarqueeMotion(options: MotionOptions) {
     return () => viewport.removeEventListener('keydown', keys)
   }, [])
 
-  return { viewportRef, trackRef, groupRef, controls }
+  return { viewportRef, trackRef, groupRef, controls, introActive }
 }

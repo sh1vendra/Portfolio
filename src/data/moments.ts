@@ -15,6 +15,7 @@ const urls = import.meta.glob<string>('../assets/moments/.generated/*.webp', {
 
 // Use only when a meaningful display name cannot be derived from a filename.
 const captionOverrides: Record<string, string> = {
+  'Computer Sciecle Excellence Awardee.jpg': 'Computer Science Excellence Awardee',
   'WebAI_hackathon.jpg': 'WebAI Community Hackathon 2025',
   'TXST Datahon 2024.jpeg': 'TXST Datathon 2024',
   'Datathon_2024.jpg': 'TXST Datathon 2025',

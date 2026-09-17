@@ -143,7 +143,10 @@ The component hierarchy is `MomentsSection` → `MomentsMarquee` → `MomentCard
 without React rerenders on animation frames. Motion pauses offscreen, in a hidden tab,
 on keyboard focus, or when expanded. Horizontal wheel input and dragging change velocity,
 which eases back to 48 pixels/second leftward; vertical input remains page scrolling.
-The decorative loop copies are hidden from assistive technology and excluded from the tab order.
+The one-time cinematic opening remains stationary until 30% of the Moments viewport is
+visible, with the first Moment parked at the right edge. It then joins the seamless loop
+without resetting when the section is revisited. Decorative loop copies are hidden from
+assistive technology and excluded from the tab order.
 
 Desktop images are 33vh high, expanding inline to 50vh. Mobile uses stable viewport
 heights and caps card width to the screen, reducing image height when necessary to

@@ -564,6 +564,9 @@
   gap: 22px;
   padding-right: 22px;
 }
+.moments-group.is-intro-hidden {
+  visibility: hidden;
+}
 .moment-card {
   --moment-height: 33vh;
   position: relative;

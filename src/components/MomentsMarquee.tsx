@@ -7,7 +7,7 @@ import MomentCard from './MomentCard'
 export default function MomentsMarquee({ moments }: { moments: Moment[] }) {
   const reducedMotion = usePrefersReducedMotion()
   const [expandedIndex, setExpandedIndex] = useState(-1)
-  const { viewportRef, trackRef, groupRef, controls } = useMarqueeMotion({
+  const { viewportRef, trackRef, groupRef, controls, introActive } = useMarqueeMotion({
     reducedMotion, paused: false, expandedIndex, count: moments.length,
   })
   const toggle = useCallback((index: number) => {
@@ -38,12 +38,12 @@ export default function MomentsMarquee({ moments }: { moments: Moment[] }) {
           if (controls.current.suppressClick()) { event.preventDefault(); event.stopPropagation() }
         }}
       >
-        <div ref={trackRef} className="moments-track">
+        <div ref={trackRef} className={`moments-track${introActive ? ' is-intro-active' : ''}`}>
           {copies.map((copy) => (
             <div
               key={copy}
               ref={copy === 1 ? groupRef : undefined}
-              className="moments-group"
+              className={`moments-group${introActive && copy === 0 ? ' is-intro-hidden' : ''}`}
               aria-hidden={copy !== 1 ? true : undefined}
             >
               {moments.map((moment, index) => (

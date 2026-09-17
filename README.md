@@ -113,11 +113,9 @@ run `npm run moments:prepare` in a second terminal, or restart the dev server.
 The generated files are ignored by Git and regenerated for production builds.
 
 HEIC/HEIF and other unsupported formats are ignored, including uppercase extensions.
-Export HEIC/HEIF images to JPEG before adding them. The original HEIC photos supplied
-for this feature are preserved in `src/assets/moments/originals/`; their converted JPEGs
-sit in the main collection folder. Subfolders are excluded, so originals never appear
-twice or ship to the browser. Discovery does not recurse into `originals/` or
-`.generated/`, and creates one manifest entry per compatible source photo, not per
+Export HEIC/HEIF images to JPEG before adding them, then keep only the browser-compatible
+export in this directory. Discovery does not recurse into subdirectories or `.generated/`,
+and creates one manifest entry per compatible source photo, not per
 optimized variant. Do not edit `.generated/` or `moments.generated.json`.
 
 Photos sort by the newest four-digit year in the filename, descending. A year attached

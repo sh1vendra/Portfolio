@@ -8,7 +8,7 @@ const source = await readFile(new URL('../src/utils/moments.ts', import.meta.url
 const { outputText } = ts.transpileModule(source, {
   compilerOptions: { target: ts.ScriptTarget.ES2020, module: ts.ModuleKind.ES2020 },
 })
-const { cleanMomentCaption, getMomentYear, sortMoments, sortMomentsWithPriorities } = await import(
+const { cleanMomentCaption, getMomentYear, orderMomentsByFilename, sortMoments, sortMomentsWithPriorities } = await import(
   `data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`
 )
 
@@ -69,4 +69,24 @@ test('explicit Moments priorities bracket normal newest-first sorting', () => {
     'A dated 2026.jpg', 'Older 2024.jpg', 'WebAI_hackathon.jpg',
     'DELL @TXST.jpeg', 'IEEE @TXST.jpeg',
   ])
+})
+
+test('manual source order keeps distinct same-caption images and requires every source once', () => {
+  const items = [
+    { filename: 'Meta AITX Hackathon 2026 2.jpg' },
+    { filename: 'HackRice Rice University 2026.jpg' },
+    { filename: 'Meta AITX Hackathon 2024.jpg' },
+    { filename: 'HackRice Rice University 2026 4.jpg' },
+    { filename: 'HackRice Rice University 2026 3.JPG' },
+  ]
+  const order = [
+    'HackRice Rice University 2026 3.JPG',
+    'HackRice Rice University 2026 4.jpg',
+    'HackRice Rice University 2026.jpg',
+    'Meta AITX Hackathon 2024.jpg',
+    'Meta AITX Hackathon 2026 2.jpg',
+  ]
+  assert.deepEqual(orderMomentsByFilename(items, order).map((item) => item.filename), order)
+  assert.throws(() => orderMomentsByFilename(items, order.slice(1)), /must list every source exactly once/)
+  assert.throws(() => orderMomentsByFilename(items, [...order, order[0]]), /duplicate source filenames/)
 })

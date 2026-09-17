@@ -26,6 +26,32 @@ export function sortMoments<T extends { filename: string; sortYear?: number }>(i
   return [...items].sort(compareChronologically)
 }
 
+/**
+ * Resolves an explicit source-file sequence and rejects an incomplete or
+ * ambiguous configuration before it can render a partial Moments collection.
+ */
+export function orderMomentsByFilename<T extends { filename: string }>(
+  items: readonly T[],
+  filenames: readonly string[],
+): T[] {
+  const configured = new Set(filenames)
+  if (configured.size !== filenames.length) {
+    throw new Error('Moments manual order contains duplicate source filenames.')
+  }
+
+  const byFilename = new Map(items.map((item) => [item.filename, item]))
+  const missing = filenames.filter((filename) => !byFilename.has(filename))
+  const unlisted = items.filter((item) => !configured.has(item.filename)).map((item) => item.filename)
+  if (missing.length || unlisted.length || items.length !== filenames.length) {
+    throw new Error(
+      `Moments manual order must list every source exactly once. Missing: ${missing.join(', ') || 'none'}. `
+      + `Unlisted: ${unlisted.join(', ') || 'none'}.`,
+    )
+  }
+
+  return filenames.map((filename) => byFilename.get(filename)!)
+}
+
 type MomentPriority = 'awardee' | 'meetup' | 'normal' | 'dell' | 'ieee'
 
 /**

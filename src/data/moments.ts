@@ -1,5 +1,5 @@
 import generated from './moments.generated.json'
-import { cleanMomentCaption, sortMomentsWithPriorities } from '../utils/moments'
+import { cleanMomentCaption, orderMomentsByFilename } from '../utils/moments'
 
 // Import only optimized variants. This nonrecursive glob cannot include originals.
 // Manifest records, rather than variant files, determine the number of Moment cards.
@@ -9,9 +9,33 @@ const urls = import.meta.glob<string>('../assets/moments/.generated/*.webp', {
   import: 'default',
 })
 
-// Priority rules supplement the normal newest-year-first order:
-// Excellence Awardee is first, Tech Startup Meetup is second, and DELL/IEEE are last.
-// See sortMomentsWithPriorities for the centralized matching rules.
+// This is the complete, manually curated source sequence. Match source filenames
+// rather than captions because some distinct images share a display caption.
+const manualMomentOrder = [
+  'Computer Sciecle Excellence Awardee.jpg',
+  'Tech Startup Meetup @Houston TX.jpg',
+  'SXSW 2026 @Austin TX.jpg',
+  'HackRice Rice University 2026 3.JPG',
+  'HackRice Rice University 2026 4.jpg',
+  'HackRice Rice University 2026.jpg',
+  'OpenAI Codex Hackathon 2026.jpg',
+  'TXST Shipaton 2026 .jpg',
+  'AI Build LaunchD Hackathon 2026.jpg',
+  'NVIDIA AITX Hackathon2025.jpg',
+  'WebAI_hackathon.jpg',
+  'WebAI Headquarters Austin TX.jpg',
+  'HackTX Hackathon 2024.jpeg',
+  'Meta AITX Hackathon 2024.jpg',
+  'Meta AITX Hackathon 2026 2.jpg',
+  'TXST Datahon 2024.jpeg',
+  "Dean's List Fall 2023.jpeg",
+  'Alpha Lambda Delta Honor Ceremony.jpg',
+  'Meta @Capital Factory.jpg',
+  'N8N Build.jpg',
+  'Datathon_2024.jpg',
+  'DELL @TXST.jpeg',
+  'IEEE @TXST.jpeg',
+] as const
 
 // Use only when a meaningful display name cannot be derived from a filename.
 const captionOverrides: Record<string, string> = {
@@ -21,11 +45,6 @@ const captionOverrides: Record<string, string> = {
   'TXST Datahon 2024.jpeg': 'TXST Datathon 2024',
   'Datathon_2024.jpg': 'TXST Datathon 2025',
   'TXST Shipaton 2026 .jpg': 'TXST Shipaton Hackathon 2026',
-}
-
-// Source filenames remain stable; use this only when an embedded event year is wrong.
-const yearOverrides: Record<string, number> = {
-  'Meta AITX Hackathon 2026 2.jpg': 2024,
 }
 
 interface MomentPresentation {
@@ -58,17 +77,13 @@ interface GeneratedMoment {
   width: number
   height: number
   sources: { file: string; width: number }[]
-  sortYear?: number
 }
 
 // Explicit typing also supports a freshly generated, completely empty collection.
-const generatedMoments: GeneratedMoment[] = generated.map((item) => ({
-  ...item,
-  sortYear: yearOverrides[item.filename],
-}))
-const ordered = sortMomentsWithPriorities(generatedMoments)
+const generatedMoments: GeneratedMoment[] = generated
+const ordered = orderMomentsByFilename(generatedMoments, manualMomentOrder)
 
-export const moments: Moment[] = ordered.map(({ sortYear: _sortYear, ...item }) => {
+export const moments: Moment[] = ordered.map((item) => {
   const sourceUrl = (file: string) => urls[`../assets/moments/.generated/${file}`]
   return {
     ...item,

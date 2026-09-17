@@ -54,6 +54,11 @@ interface MomentPresentation {
 
 // Image-specific framing is kept here so shared card sizing stays unchanged.
 const presentationOverrides: Record<string, MomentPresentation> = {
+  // Portrait standing group: trim the ceiling while keeping the group centered.
+  'HackRice Rice University 2026 4.jpg': {
+    imageScale: 1.3,
+    transformOrigin: '50% 65%',
+  },
   'TXST Shipaton 2026 .jpg': {
     imageScale: 1.32,
     transformOrigin: '50% 55%',

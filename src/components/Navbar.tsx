@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
+import { moments } from '../data/moments'
 
 const links = [
   { label: 'Home', href: '#hero' },
+  ...(moments.length ? [{ label: 'Moments', href: '#moments' }] : []),
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },

@@ -4,8 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "moments:prepare": "node scripts/prepare-moments.mjs",
+    "predev": "npm run moments:prepare",
     "dev": "vite",
+    "prebuild": "npm run moments:prepare",
     "build": "tsc && vite build",
+    "test": "node --test tests/*.test.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,6 +24,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.40",
+    "sharp": "^0.35.4",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.3",
     "vite": "^5.4.0"

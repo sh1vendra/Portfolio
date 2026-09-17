@@ -3,3 +3,5 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+src/assets/moments/.generated/
+src/data/moments.generated.json

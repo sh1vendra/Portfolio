@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 interface SectionHeadingProps {
   title: string
-  note: string
+  note?: string
 }
 
 export default function SectionHeading({ title, note }: SectionHeadingProps) {
@@ -15,7 +15,7 @@ export default function SectionHeading({ title, note }: SectionHeadingProps) {
       className="section-heading"
     >
       <div>
-        <p className="eyebrow">{note}</p>
+        {note && <p className="eyebrow">{note}</p>}
         <h2>
           {title}
           <span className="accent-dot">.</span>

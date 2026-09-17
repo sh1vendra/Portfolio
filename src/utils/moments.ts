@@ -16,9 +16,33 @@ export function getMomentYear(filename: string): number | null {
 
 const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' })
 
+function compareChronologically<T extends { filename: string }>(a: T, b: T): number {
+  const yearDifference = (getMomentYear(b.filename) ?? 0) - (getMomentYear(a.filename) ?? 0)
+  return yearDifference || collator.compare(cleanMomentCaption(a.filename), cleanMomentCaption(b.filename))
+}
+
 export function sortMoments<T extends { filename: string }>(items: readonly T[]): T[] {
+  return [...items].sort(compareChronologically)
+}
+
+type MomentPriority = 'awardee' | 'meetup' | 'normal' | 'dell' | 'ieee'
+
+/**
+ * Keeps named Moments at intentional positions while preserving the normal
+ * newest-first sort for everything else.
+ */
+export function sortMomentsWithPriorities<T extends { filename: string }>(items: readonly T[]): T[] {
+  const priority = (filename: string): MomentPriority => {
+    if (filename.includes('Computer Sciecle Excellence Awardee')) return 'awardee'
+    if (filename.includes('Tech Startup Meetup')) return 'meetup'
+    if (filename.includes('DELL')) return 'dell'
+    if (filename.includes('IEEE')) return 'ieee'
+    return 'normal'
+  }
+  const rank: Record<MomentPriority, number> = { awardee: 0, meetup: 1, normal: 2, dell: 3, ieee: 4 }
+
   return [...items].sort((a, b) => {
-    const yearDifference = (getMomentYear(b.filename) ?? 0) - (getMomentYear(a.filename) ?? 0)
-    return yearDifference || collator.compare(cleanMomentCaption(a.filename), cleanMomentCaption(b.filename))
+    const priorityDifference = rank[priority(a.filename)] - rank[priority(b.filename)]
+    return priorityDifference || compareChronologically(a, b)
   })
 }

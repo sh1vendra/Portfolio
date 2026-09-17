@@ -122,8 +122,9 @@ Photos sort by the newest four-digit year in the filename, descending. A year at
 to a word, such as `Hackathon2025`, is recognized. Undated photos always come last.
 Within a year, cleaned captions provide a secondary natural sort, and equivalent
 captions retain stable order. Later years automatically move ahead of older ones.
-To override the order, add exact filenames to `manualOrder` in `src/data/moments.ts`.
-Listed files come first in that order; unlisted files retain the automatic ordering.
+The centralized priority rules in `src/utils/moments.ts` place Computer Science Excellence
+Awardee first, Tech Startup Meetup second, then normal chronological Moments, followed by
+DELL and IEEE at the end in that order.
 
 Captions remove the extension, replace underscores/hyphens with spaces, collapse
 whitespace, and strip a final standalone one-to-three-digit photo sequence number.
@@ -141,9 +142,8 @@ The component hierarchy is `MomentsSection` → `MomentsMarquee` → `MomentCard
 `useMarqueeMotion` updates a transformed, triplicated track with `requestAnimationFrame`
 without React rerenders on animation frames. Motion pauses offscreen, in a hidden tab,
 on keyboard focus, or when expanded. Horizontal wheel input and dragging change velocity,
-which eases back to 24 pixels/second leftward; vertical input remains page scrolling.
-An explicit Pause/Play control is also available. The decorative loop copies are hidden
-from assistive technology and excluded from the tab order.
+which eases back to 48 pixels/second leftward; vertical input remains page scrolling.
+The decorative loop copies are hidden from assistive technology and excluded from the tab order.
 
 Desktop images are 33vh high, expanding inline to 50vh. Mobile uses stable viewport
 heights and caps card width to the screen, reducing image height when necessary to

@@ -54,6 +54,10 @@ function MomentCard({ moment, index, expanded, duplicate, onToggle }: MomentCard
             loading="eager"
             decoding="async"
             draggable={false}
+            style={{
+              '--moment-image-scale': moment.presentation?.imageScale ?? 1,
+              '--moment-image-origin': moment.presentation?.transformOrigin ?? '50% 50%',
+            } as CSSProperties}
             onError={() => setFailed(true)}
           />
         )}

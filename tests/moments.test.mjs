@@ -8,7 +8,7 @@ const source = await readFile(new URL('../src/utils/moments.ts', import.meta.url
 const { outputText } = ts.transpileModule(source, {
   compilerOptions: { target: ts.ScriptTarget.ES2020, module: ts.ModuleKind.ES2020 },
 })
-const { cleanMomentCaption, getMomentYear, sortMoments } = await import(
+const { cleanMomentCaption, getMomentYear, sortMoments, sortMomentsWithPriorities } = await import(
   `data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`
 )
 
@@ -46,4 +46,17 @@ test('same-year captions provide a secondary key; identical captions remain stab
     'A 2026.jpg', 'HackRice 2026 3.jpg', 'HackRice 2026 1.jpg', 'Z 2026.jpg',
   ])
   assert.deepEqual(sortMoments([]), [])
+})
+
+test('explicit Moments priorities bracket normal newest-first sorting', () => {
+  const filenames = [
+    'IEEE @TXST.jpeg', 'DELL @TXST.jpeg', 'A dated 2026.jpg',
+    'WebAI_hackathon.jpg', 'Tech Startup Meetup @Houston TX.jpg', 'Older 2024.jpg',
+    'Computer Sciecle Excellence Awardee.jpg',
+  ].map((filename) => ({ filename }))
+  assert.deepEqual(sortMomentsWithPriorities(filenames).map((item) => item.filename), [
+    'Computer Sciecle Excellence Awardee.jpg', 'Tech Startup Meetup @Houston TX.jpg',
+    'A dated 2026.jpg', 'Older 2024.jpg', 'WebAI_hackathon.jpg',
+    'DELL @TXST.jpeg', 'IEEE @TXST.jpeg',
+  ])
 })

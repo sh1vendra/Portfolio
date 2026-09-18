@@ -769,11 +769,10 @@
   gap: 9px;
   margin-top: 14px;
   padding: 11px 14px;
-  border: 1px solid color-mix(in srgb, var(--accent) 72%, var(--line));
+  border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(90deg, rgba(176, 239, 114, 0.2), rgba(176, 239, 114, 0.08));
-  color: #e4ffc7;
-  box-shadow: 0 0 22px rgba(176, 239, 114, 0.16);
+  background: transparent;
+  color: var(--text);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -786,8 +785,8 @@
 }
 .coursework-scroll-button:hover,
 .coursework-scroll-button:focus-visible {
-  background: rgba(176, 239, 114, 0.28);
-  box-shadow: 0 0 28px rgba(176, 239, 114, 0.3);
+  background: var(--surface-hover);
+  border-color: var(--accent);
 }
 .detail-pill {
   padding: 7px 10px;
@@ -869,6 +868,27 @@
 }
 .projects-section {
   border-top: 1px solid var(--line);
+}
+.projects-more-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 8px;
+  margin: 32px auto 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.projects-more-link span {
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1;
+}
+.projects-more-link:hover,
+.projects-more-link:focus-visible {
+  color: var(--text);
 }
 .project-card {
   display: flex;

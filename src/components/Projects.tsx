@@ -67,6 +67,14 @@ export default function Projects() {
             </motion.article>
           ))}
         </div>
+        <a
+          href="https://github.com/sh1vendra"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="projects-more-link"
+        >
+          More projects on GitHub <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
   )

@@ -4,7 +4,7 @@ import Typed from 'typed.js'
 
 const roles = [
   'Intel Ambassador',
-  'AI Agents & Systems',
+  'AI Agents & Orchestration',
   'Forward Deployed Engineer',
   'Agentic Software Developer',
   'Full-Stack AI Engineer',

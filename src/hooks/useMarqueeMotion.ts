@@ -62,16 +62,27 @@ export function useMarqueeMotion(options: MotionOptions) {
       const card = group.children[index] as HTMLElement | undefined
       return card ? card.offsetLeft + card.offsetWidth / 2 - viewportWidth / 2 : 0
     }
+    const finishIntro = () => {
+      if (!intro) return
+      // Convert the intro offset into the normal loop coordinate system without
+      // changing the rendered track position. Manual selection can then center
+      // a card without pushing the still-hidden leading copy offscreen.
+      position -= Math.max(0, viewportWidth - firstCardWidth - INTRO_RIGHT_INSET)
+      intro = false
+      setIntroActive(false)
+    }
     const center = (index: number, followLayout = false) => {
       if (index < 0 || index >= latest.current.count) return
       velocity = 0
       if (reduced) {
         viewport.scrollTo({ left: itemCenter(index), behavior: 'auto' })
       } else {
+        finishIntro()
         // Map a visible clone to the corresponding original without a visible jump.
         const target = itemCenter(index)
         if (groupWidth) position = target + wrap(position - target + groupWidth / 2, groupWidth) - groupWidth / 2
         anchor = { index, until: performance.now() + (followLayout ? 500 : 350) }
+        paint()
       }
     }
     controls.current = {

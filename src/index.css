@@ -612,27 +612,6 @@
 .moment-card.is-expanded .moment-image-button {
   box-shadow: 0 0 0 1px var(--accent), 0 10px 30px var(--glow);
 }
-.moment-expand-mark {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--nav);
-  color: var(--text);
-  font-size: 19px;
-  line-height: 1;
-  pointer-events: none;
-}
-.moment-card.is-expanded .moment-expand-mark {
-  background: var(--accent);
-  color: var(--canvas);
-  border-color: var(--accent);
-}
 .moment-card figcaption {
   padding: 16px 1px 8px;
   font-size: 13px;

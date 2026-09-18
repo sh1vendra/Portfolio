@@ -62,7 +62,6 @@ function MomentCard({ moment, index, expanded, duplicate, onToggle }: MomentCard
           />
         )}
         {failed && <span className="moment-image-fallback">Image unavailable</span>}
-        <span className="moment-expand-mark" aria-hidden="true">{expanded ? '−' : '+'}</span>
       </button>
       <figcaption>{moment.caption}</figcaption>
     </figure>

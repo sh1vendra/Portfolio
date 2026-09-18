@@ -4,11 +4,13 @@ import Typed from 'typed.js'
 
 const roles = [
   'Intel Ambassador',
-  'AI Agents & Orchestration',
+  'AI Agents & Systems',
   'Forward Deployed Engineer',
   'Agentic Software Developer',
-  'Athlete',
-  'Full-Stack Software Developer',
+  'Full-Stack AI Engineer',
+  'Backend Systems Engineer',
+  'Student Leader & Athlete',
+  'Hackathon Winner',
 ]
 
 export default function Hero() {
@@ -57,12 +59,12 @@ export default function Hero() {
               <span className="sr-only">{roles.join(', ')}</span>
               <span
                 className="role-text"
-                data-longest-role="Full-Stack Software Developer"
+                data-longest-role="Student Leader & Athlete"
                 aria-hidden="true"
               >
                 <span className="role-line">
                   {reducedMotion ? (
-                    <span>Full-Stack Software Developer</span>
+                    <span>Full-Stack AI Engineer</span>
                   ) : (
                     <span ref={typedRef} />
                   )}

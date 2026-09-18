@@ -520,16 +520,11 @@
 }
 .hero-portrait figcaption {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   color: var(--quiet);
   font-size: 9.6px;
   letter-spacing: 0.13em;
   margin-top: 17px;
-}
-.hero-portrait figcaption > span:last-child {
-  font-size: 24px;
-  color: var(--accent);
 }
 
 .page-section {
@@ -1272,9 +1267,6 @@
   .hero-portrait figcaption {
     font-size: 7.2px;
     margin-top: 10px;
-  }
-  .hero-portrait figcaption > span:last-child {
-    font-size: 18px;
   }
   .hero-copy {
     width: 100%;

@@ -110,7 +110,6 @@ export default function Hero() {
             </div>
             <figcaption>
               <span>THE PERSON BEHIND THE CODE</span>
-              <span aria-hidden="true">↗</span>
             </figcaption>
           </motion.figure>
         </div>

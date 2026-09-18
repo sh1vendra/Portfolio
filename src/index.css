@@ -1243,6 +1243,19 @@
   .mobile-nav a.is-active {
     color: var(--accent);
   }
+  .mobile-nav a > span[aria-hidden='true'],
+  .role-prefix,
+  .section-mark,
+  .experience-bullets li > span,
+  .coursework-scroll-button i,
+  .projects-more-link > span,
+  .contact-links a > span:last-child,
+  .footer-baseline a > span {
+    display: none;
+  }
+  .experience-bullets li {
+    gap: 0;
+  }
   .hero-section {
     min-height: auto;
   }
@@ -1312,9 +1325,6 @@
   .eyebrow {
     font-size: 9.6px;
     letter-spacing: 0.14em;
-  }
-  .section-mark {
-    font-size: 33px;
   }
   .about-card {
     padding: 24px;

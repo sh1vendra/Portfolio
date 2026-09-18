@@ -893,6 +893,8 @@
 .project-card {
   display: flex;
   flex-direction: column;
+  height: clamp(400px, 42vh, 480px);
+  height: clamp(400px, 42svh, 480px);
   overflow: hidden;
 }
 .project-chrome {
@@ -920,7 +922,8 @@
   opacity: 0.7;
 }
 .project-image {
-  height: 230px;
+  height: 120px;
+  flex-shrink: 0;
   overflow: hidden;
   background: var(--soft);
   border-block: 1px solid var(--line);
@@ -939,7 +942,9 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 26px;
+  min-height: 0;
+  overflow: hidden;
+  padding: 18px;
 }
 .project-content h3 {
   font-size: 24px;
@@ -949,17 +954,37 @@
   margin-bottom: 13px;
 }
 .project-description {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--accent) var(--soft);
   font-size: 16.8px;
   line-height: 1.85;
   color: var(--muted);
-  margin-bottom: 24px;
+  margin: 0 0 14px;
+  padding-right: 12px;
+}
+.project-description::-webkit-scrollbar {
+  width: 6px;
+}
+.project-description::-webkit-scrollbar-track {
+  background: var(--soft);
+  border-radius: 999px;
+}
+.project-description::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 72%, var(--line));
+  border-radius: 999px;
+}
+.project-description:focus-visible {
+  outline-offset: 2px;
 }
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: auto;
-  padding-bottom: 24px;
+  flex-shrink: 0;
+  padding-bottom: 14px;
 }
 .tech-tag {
   font-size: 12px;
@@ -973,9 +998,10 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  flex-shrink: 0;
   gap: 18px;
   border-top: 1px solid var(--line);
-  padding-top: 18px;
+  padding-top: 14px;
 }
 .project-link {
   display: inline-flex;
@@ -1327,11 +1353,15 @@
     font-size: 15.6px;
   }
   .project-image {
-    height: auto;
-    aspect-ratio: 1.85;
+    height: 140px;
+    aspect-ratio: auto;
+  }
+  .project-card {
+    height: clamp(500px, 72vh, 580px);
+    height: clamp(500px, 72svh, 580px);
   }
   .project-content {
-    padding: 23px;
+    padding: 20px;
   }
   .skill-row {
     align-items: flex-start;

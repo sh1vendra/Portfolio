@@ -29,7 +29,13 @@ export default function Projects() {
               </div>
               <div className="project-content">
                 <h3>{project.name}</h3>
-                <p className="project-description">{project.description}</p>
+                <p
+                  className="project-description"
+                  tabIndex={0}
+                  aria-label={`${project.name} description`}
+                >
+                  {project.description}
+                </p>
                 <div className="project-tags">
                   {project.tags.map((tag) => (
                     <span key={tag} className="tech-tag">

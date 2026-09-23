@@ -7,6 +7,7 @@ export interface Project {
   github: string
   youtube?: string
   screenshot?: string
+  cardImagePosition?: string
   alt: string
 }
 
@@ -66,6 +67,7 @@ export const projects: Project[] = [
     tags: ['React 19', 'Vite', 'Tailwind CSS', 'Minimax', 'Web Audio API', 'Canvas', 'Firebase'],
     github: 'https://github.com/sh1vendra/Tic_Tac_Toe',
     screenshot: '/assets/projects/tictactoe.png',
+    cardImagePosition: 'center',
     alt: 'Arcade Tic-Tac-Toe game interface',
   },
   {

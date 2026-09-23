@@ -81,7 +81,12 @@ export default function Projects() {
                 </div>
                 <div className="project-image">
                   {project.screenshot ? (
-                    <img src={project.screenshot} alt={project.alt} loading="lazy" />
+                    <img
+                      src={project.screenshot}
+                      alt={project.alt}
+                      loading="lazy"
+                      style={project.cardImagePosition ? { objectPosition: project.cardImagePosition } : undefined}
+                    />
                   ) : (
                     <div className="project-image-pending">Screenshot coming soon</div>
                   )}

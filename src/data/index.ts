@@ -107,8 +107,8 @@ Built with Python, sentence-transformers, ChromaDB, Groq, and Gradio.`,
     tags: ['Python', 'sentence-transformers', 'ChromaDB', 'Groq', 'Llama 3.3 70B', 'Gradio', 'RAG'],
     github: 'https://github.com/sh1vendra/TXST-Professor-Review-RAG-Assistant',
     youtube: 'https://youtu.be/UIU037nvfo0',
-    // Add screenshot: '/assets/projects/professor-review-rag.png' when the image is provided.
-    alt: 'Professor Review RAG Assistant Chatbot interface',
+    screenshot: '/assets/projects/professor-review-rag.png',
+    alt: 'Gradio interface answering a Texas State professor review question with cited sources',
   },
 ]
 

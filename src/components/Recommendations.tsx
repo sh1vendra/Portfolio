@@ -86,7 +86,7 @@ export default function Recommendations() {
                     <span key={trait} className="recommendation-trait">{trait}</span>
                   ))}
                 </div>
-                <p className="recommendation-preview">{recommendation.text}</p>
+                <p className="recommendation-preview">&quot;{recommendation.text}&quot;</p>
                 <button
                   type="button"
                   className="project-see-more recommendation-see-more"
@@ -151,7 +151,7 @@ export default function Recommendations() {
                       <span key={trait} className="recommendation-trait">{trait}</span>
                     ))}
                   </div>
-                  <p className="recommendation-full-text">{selectedRecommendation.text}</p>
+                  <p className="recommendation-full-text">&quot;{selectedRecommendation.text}&quot;</p>
                 </motion.article>
               </motion.div>
             )}

@@ -87,7 +87,7 @@ export const projects: Project[] = [
     alt: 'Space Invaders gameplay',
   },
   {
-    name: 'Professor Review RAG Assistant Chatbot',
+    name: 'Professor Review RAG Assistant',
     description:
       'An AI assistant that answers questions about Texas State University professors using real student reviews. It retrieves relevant review chunks with semantic search and generates grounded answers with source citations instead of guessing.',
     modalDescription: `An AI assistant that answers questions about Texas State University professors using real student reviews. Official sources say nothing about exam difficulty, grading style, or attendance, so this fills that gap. Ask Which math professor is best if I'm bad at math? and it returns an answer grounded only in the reviews, with the source files cited.

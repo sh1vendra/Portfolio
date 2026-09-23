@@ -1219,10 +1219,10 @@
   place-items: center;
   width: 52px;
   height: 52px;
-  border: 1px solid color-mix(in srgb, var(--accent) 58%, var(--line));
+  border: 1px solid var(--line);
   border-radius: 50%;
   background: var(--soft);
-  color: var(--accent);
+  color: var(--muted);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.04em;

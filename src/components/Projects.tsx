@@ -80,7 +80,11 @@ export default function Projects() {
                   </span>
                 </div>
                 <div className="project-image">
-                  <img src={project.screenshot} alt={project.alt} loading="lazy" />
+                  {project.screenshot ? (
+                    <img src={project.screenshot} alt={project.alt} loading="lazy" />
+                  ) : (
+                    <div className="project-image-pending">Screenshot coming soon</div>
+                  )}
                 </div>
                 <div className="project-content">
                   <h3>{project.name}</h3>
@@ -177,12 +181,27 @@ export default function Projects() {
                     <i className="fas fa-times" aria-hidden="true" />
                   </button>
                   <div className="project-modal-image">
-                    <img src={selectedProject.screenshot} alt={selectedProject.alt} />
+                    {selectedProject.screenshot ? (
+                      <img src={selectedProject.screenshot} alt={selectedProject.alt} />
+                    ) : (
+                      <div className="project-image-pending">Screenshot coming soon</div>
+                    )}
                   </div>
                   <div className="project-modal-content">
                     <p className="eyebrow">Project details</p>
                     <h3 id="project-modal-title">{selectedProject.name}</h3>
-                    <p className="project-modal-description">{selectedProject.description}</p>
+                    {(selectedProject.modalDescription ?? selectedProject.description)
+                      .split('\n\n')
+                      .map((paragraph) => (
+                        <p key={paragraph} className="project-modal-description">{paragraph}</p>
+                      ))}
+                    {selectedProject.technicalDetails && (
+                      <ul className="project-modal-technical-details">
+                        {selectedProject.technicalDetails.map((detail) => (
+                          <li key={detail}>{detail}</li>
+                        ))}
+                      </ul>
+                    )}
                     <div className="project-modal-tags">
                       {selectedProject.tags.map((tag) => (
                         <span key={tag} className="tech-tag">

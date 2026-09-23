@@ -1,10 +1,12 @@
 export interface Project {
   name: string
   description: string
+  modalDescription?: string
+  technicalDetails?: string[]
   tags: string[]
   github: string
   youtube?: string
-  screenshot: string
+  screenshot?: string
   alt: string
 }
 
@@ -83,6 +85,30 @@ export const projects: Project[] = [
     github: 'https://github.com/sh1vendra/Space_Invaders',
     screenshot: '/assets/projects/spaceinvaders.png',
     alt: 'Space Invaders gameplay',
+  },
+  {
+    name: 'Professor Review RAG Assistant Chatbot',
+    description:
+      'An AI assistant that answers questions about Texas State University professors using real student reviews. It retrieves relevant review chunks with semantic search and generates grounded answers with source citations instead of guessing.',
+    modalDescription: `An AI assistant that answers questions about Texas State University professors using real student reviews. Official sources say nothing about exam difficulty, grading style, or attendance, so this fills that gap. Ask Which math professor is best if I'm bad at math? and it returns an answer grounded only in the reviews, with the source files cited.
+
+It's a retrieval-augmented generation pipeline. Reviews are chunked and embedded locally with sentence-transformers, stored in ChromaDB, and retrieved by semantic similarity. Llama 3.3 70B on Groq then writes the answer under a strict grounding prompt. When the reviews don't contain the answer, it says so instead of guessing. The app runs as a Gradio web interface.
+
+Built with Python, sentence-transformers, ChromaDB, Groq, and Gradio.`,
+    technicalDetails: [
+      '72 review chunks, each up to 300 characters with 50-character overlap.',
+      'Local all-MiniLM-L6-v2 embeddings stored in a persistent ChromaDB collection.',
+      'Top-4 semantic retrieval using ChromaDB vector distance (default L2).',
+      'Llama 3.3 70B through Groq with a strict review-only grounding prompt.',
+      'Source files are attributed programmatically from retrieved chunk metadata.',
+      'For out-of-scope questions, the prompt directs the model to state that the answer is not contained in the reviews.',
+      'Known limitation: top-4 retrieval can miss relevant professors in cross-professor comparisons.',
+    ],
+    tags: ['Python', 'sentence-transformers', 'ChromaDB', 'Groq', 'Llama 3.3 70B', 'Gradio', 'RAG'],
+    github: 'https://github.com/sh1vendra/TXST-Professor-Review-RAG-Assistant',
+    youtube: 'https://youtu.be/UIU037nvfo0',
+    // Add screenshot: '/assets/projects/professor-review-rag.png' when the image is provided.
+    alt: 'Professor Review RAG Assistant Chatbot interface',
   },
 ]
 

@@ -6,6 +6,7 @@ import MomentsSection from './components/MomentsSection'
 import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
+import Recommendations from './components/Recommendations'
 import Hobbies from './components/Hobbies'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
@@ -30,6 +31,7 @@ export default function App() {
           <Experience />
           <Projects />
           <Skills />
+          <Recommendations />
           <Hobbies />
           <Contact />
         </main>

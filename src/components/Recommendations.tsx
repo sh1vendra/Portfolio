@@ -65,6 +65,13 @@ export default function Recommendations() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: (index % 2) * 0.06 }}
               >
+                <button
+                  type="button"
+                  className="card-open-button"
+                  onClick={() => setSelectedRecommendation(recommendation)}
+                  aria-haspopup="dialog"
+                  aria-label={`Read recommendation from ${recommendation.name}`}
+                />
                 <div className="recommendation-person">
                   <span className="recommendation-initials" aria-hidden="true">
                     {recommendation.initials}

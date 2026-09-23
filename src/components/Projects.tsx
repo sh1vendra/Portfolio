@@ -55,7 +55,7 @@ export default function Projects() {
       <section id="projects" className="page-section projects-section">
         <div className="section-container">
           <SectionHeading title="Projects" note="Ideas, made real" />
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="projects-grid">
             {projects.map((project, i) => (
               <motion.article
                 key={project.name}
@@ -65,6 +65,13 @@ export default function Projects() {
                 transition={{ duration: 0.45, delay: (i % 2) * 0.06 }}
                 className="card project-card group"
               >
+                <button
+                  type="button"
+                  className="card-open-button"
+                  onClick={() => setSelectedProject(project)}
+                  aria-haspopup="dialog"
+                  aria-label={`View details for ${project.name}`}
+                />
                 <div className="project-chrome">
                   <span className="project-dots" aria-hidden="true">
                     <i />

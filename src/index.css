@@ -843,6 +843,17 @@
 .projects-section {
   border-top: 1px solid var(--line);
 }
+.projects-section .section-container {
+  max-width: 1400px;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.projects-grid .project-card {
+  min-height: 530px;
+}
 .projects-more-link {
   display: flex;
   align-items: center;
@@ -865,11 +876,27 @@
   color: var(--text);
 }
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: clamp(500px, 50vh, 560px);
   height: clamp(500px, 50svh, 560px);
   overflow: hidden;
+}
+.card-open-button {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.card-open-button:focus-visible {
+  outline-offset: -4px;
 }
 .project-chrome {
   padding: 13px 18px;
@@ -940,6 +967,8 @@
   margin: 0;
 }
 .project-see-more {
+  position: relative;
+  z-index: 2;
   width: fit-content;
   margin-top: 7px;
   padding: 0;
@@ -981,6 +1010,8 @@
   padding-top: 14px;
 }
 .project-link {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   color: var(--text);
@@ -1156,6 +1187,7 @@
   gap: 24px;
 }
 .recommendation-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -1414,6 +1446,12 @@
   }
 }
 @media (max-width: 1120px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .projects-grid .project-card {
+    min-height: 0;
+  }
   .desktop-nav {
     display: none;
   }
@@ -1464,6 +1502,9 @@
   }
 }
 @media (max-width: 767px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
   .glow-bubble {
     width: calc(var(--bubble-size) * 0.75);
   }

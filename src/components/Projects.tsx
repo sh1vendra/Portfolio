@@ -137,7 +137,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="projects-more-link"
           >
-            More projects on GitHub <span aria-hidden="true">→</span>
+            More projects on GitHub <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>

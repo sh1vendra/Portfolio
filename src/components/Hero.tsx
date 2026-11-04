@@ -98,13 +98,15 @@ export default function Hero() {
             className="hero-portrait"
           >
             <div className="portrait-frame">
-              <img
-                src="/assets/portrait.jpg"
-                alt="Portrait of Shivendra Bhagat in a navy polo against a yellow background"
-                width="1280"
-                height="1920"
-                fetchPriority="high"
-              />
+              <div className="portrait-photo">
+                <img
+                  src="/assets/portrait.jpg"
+                  alt="Portrait of Shivendra Bhagat in a navy polo against a yellow background"
+                  width="1280"
+                  height="1920"
+                  fetchPriority="high"
+                />
+              </div>
               <span className="portrait-corner corner-top" aria-hidden="true" />
               <span className="portrait-corner corner-bottom" aria-hidden="true" />
             </div>

@@ -488,8 +488,14 @@
   border-radius: 100px 14px 14px 14px;
   background: var(--surface);
 }
+.portrait-photo {
+  overflow: hidden;
+  border-radius: 93px 8px 8px 8px;
+}
 .portrait-frame img {
   display: block;
+  transform: scale(1.25);
+  transform-origin: 50% 85%;
   width: 100%;
   height: auto;
   aspect-ratio: 2 / 3;
@@ -1573,6 +1579,9 @@
   .portrait-frame {
     padding: 6px;
     border-top-left-radius: 65px;
+  }
+  .portrait-photo {
+    border-top-left-radius: 60px;
   }
   .portrait-frame img {
     border-top-left-radius: 60px;

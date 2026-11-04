@@ -35,7 +35,7 @@ Built with React, TypeScript, Python, FastAPI, Supabase, Claude, and Apify.`,
     github: 'https://github.com/Cal-Hacks-2026/Hindsight',
     youtube: 'https://www.youtube.com/watch?v=w_SfcxC1SE0',
     screenshot: '/assets/projects/hindsight.jpg',
-    alt: 'Hindsight home screen on a laptop showing a transfer student path, next term and this week opportunities',
+    alt: 'Hindsight transfer planner banner with the Janus mark and the line your whole path through college, in one place',
   },
   {
     name: 'BioTwin — AI Wellness Coach',

@@ -12,6 +12,8 @@ const urls = import.meta.glob<string>('../assets/moments/.generated/*.webp', {
 // This is the complete, manually curated source sequence. Match source filenames
 // rather than captions because some distinct images share a display caption.
 const manualMomentOrder = [
+  'Cal Hacks 2026 @San Francisco.jpeg',
+  'Cal Hacks 2026 @San Francisco.jpg',
   'Computer Sciecle Excellence Awardee.jpg',
   'Tech Startup Meetup @Houston TX.jpg',
   'SXSW 2026 @Austin TX.jpg',

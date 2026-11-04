@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import Typed from 'typed.js'
 
 const roles = [
-  'Intel Ambassador',
+  'Ambassador at Intel and Honors College',
   'AI Agents & Orchestration',
   'Agentic Software Developer',
   'Full-Stack AI Engineer',

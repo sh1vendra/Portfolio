@@ -100,7 +100,7 @@ export default function Hero() {
               <div className="portrait-photo">
                 <img
                   src="/assets/portrait.jpg"
-                  alt="Portrait of Shivendra Bhagat in a navy polo against a yellow background"
+                  alt="Portrait of Shivendra Bhagat in a light blue button-up shirt"
                   width="1280"
                   height="1920"
                   fetchPriority="high"

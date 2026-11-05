@@ -16,20 +16,17 @@ export const projects: Project[] = [
     name: 'Hindsight - Transfer Planner',
     description:
       'A transfer planner for California community-college students. It turns a transcript into checked credits, a term-by-term plan through graduation, and campus opportunities that fit your week, with every answer citing its source. Built for Cal Hacks 2026 in San Francisco.',
-    modalDescription: `A transfer planner for California community-college students, built for Cal Hacks 2026 in San Francisco. Advising usually means reading ASSIST together, and a course can transfer as credit without counting toward the major. Hindsight puts what your credits count for, a plan for every term, and what's worth your time this week in one place, and every answer cites its source.
+    modalDescription: `A transfer planner for California community-college students, built for Cal Hacks 2026. A course can transfer as credit without counting toward the major, and advising rarely explains why. Hindsight shows what your credits count for, a plan for every term, and what's worth your time this week, with every answer cited.
 
-A student uploads a transcript, Claude extracts the courses, and the student confirms the rows. A deterministic matcher checks them against ASSIST agreements, a deterministic planner builds the term-by-term path through graduation, and GE progress is tracked by area. Campus opportunities are scraped from source pages and ranked against the student's majors, goals and free time. An Ask panel on every page answers from the student's own records with numbered sources.
+Upload a transcript, confirm the courses Claude extracts, and get checked credits, a term-by-term plan, and campus opportunities ranked to your week.
 
 Built with React, TypeScript, Python, FastAPI, Supabase, Claude, and Apify.`,
     technicalDetails: [
-      'Works for all 116 California community colleges and every university each has ASSIST agreements with.',
-      'Claude extracts transcript and class-schedule rows, and the student confirms them before anything is saved.',
+      'Covers all 116 California community colleges and their ASSIST agreements.',
       'Credit matching and term planning are deterministic code, not model output.',
-      'The University guide is written only from the university\'s own pages, and any item whose quote is not on the cited page is dropped.',
-      'Citation IDs in answers are checked against the sources given to the model.',
-      'Apify Cheerio Scraper pulls campus events and listings, and deterministic code ranks them.',
-      'Supabase stores profiles, confirmed coursework, schedules, cached agreements and opportunities.',
-      'Full plan through graduation currently covers San Jose State University\'s Data Science and Economics majors.',
+      'Citation IDs are checked against the sources given to the model.',
+      'Apify scrapes campus events, and deterministic code ranks them.',
+      'Full plan through graduation covers San Jose State Data Science and Economics.',
     ],
     tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'Supabase', 'Claude', 'Apify'],
     github: 'https://github.com/Cal-Hacks-2026/Hindsight',
